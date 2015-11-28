@@ -1,0 +1,38 @@
+[alias]
+	st = status -s
+	co = checkout
+	b  = branch -vv
+	t  = tag -n
+	r  = remote -v
+
+	purr = pull --rebase
+	puff = push --force
+	fett = fetch --prune
+
+	u = add -u
+	amend  = commit --amend
+	amc = commit --amend -C HEAD
+
+	lg = log --oneline --decorate
+	l  = log --oneline --decorate -7
+	pl = log --oneline --decorate master..HEAD
+
+	llg = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'
+	ll  = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' -7
+	pll = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' master..HEAD
+
+	d  = ! git difftool --tool=meld --no-prompt 2> /dev/null
+	ds = ! git d --staged
+
+	c  = log --graph --name-status -1
+	c- = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' --
+	cf = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
+	df = diff --name-status
+
+	lgrep = ! sh -c 'git lg --grep="${1}" -i' --
+
+	gr   = log --graph --decorate --name-status
+	grp  = log --graph --decorate --patch
+	lgr  = log --graph --decorate --oneline
+	llgr = log --graph --decorate --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'
+	tree = ! git llgr --all
