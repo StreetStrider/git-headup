@@ -1,0 +1,22 @@
+#! /usr/bin/env node
+
+var commands =
+{
+	t: t
+}
+
+var cmd  = process.argv[2]
+var args = process.argv.slice(3)
+
+;(commands[cmd] || notFound)(args, cmd)
+
+function t (args, cmd)
+{
+	console.info('command t')
+}
+
+function notFound (_, cmd)
+{
+	console.error('command `%s` not found', cmd)
+	process.exit(-1)
+}

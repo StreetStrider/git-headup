@@ -2,7 +2,8 @@
 	st = status -s
 	co = checkout
 	b  = branch -vv
-	t  = tag -n # node: tag if no `-n`
+	#t  = tag -n # node: tag if no `-n`
+	t  = ! git-headup t ${@}
 	r  = remote -v
 
 	purr = pull --rebase
