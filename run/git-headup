@@ -45,5 +45,5 @@ function notFound (_, cmd)
 
 function test ()
 {
-	return config('git-headup.log-depth')
+	return require('./lib/git/is-other-authors')()
 }
