@@ -23,7 +23,7 @@
 	ll  = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' -7
 	pll = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' master..HEAD
 
-	d  = ! git difftool --tool=meld --no-prompt 2> /dev/null
+	d  = ! git difftool --no-prompt 2> /dev/null
 	ds = ! git d --staged
 
 	c  = log --graph --name-status -1
