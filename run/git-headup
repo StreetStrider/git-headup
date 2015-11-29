@@ -3,13 +3,13 @@
 require('console-ultimate/global').replace()
 
 var minimist = require('minimist')
-var run = require('command-promise')
 
 
 var commands =
 {
-	t: t
+	t: require('./lib/t')
 }
+
 
 var cmd  = process.argv[2]
 var argv = process.argv.slice(3)
@@ -17,18 +17,6 @@ var args = minimist(argv)
 
 ;(commands[cmd] || notFound)(args, cmd, argv)
 
-function t (args, cmd, argv)
-{
-	if (! argv.length)
-	{
-		return run('git tag -n').then(console.dir)
-	}
-	else
-	{
-		console.warn(argv)
-		return run('git tag', argv).then(console.dir)
-	}
-}
 
 function notFound (_, cmd)
 {
