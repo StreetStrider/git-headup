@@ -24,7 +24,7 @@
 	pl = log --oneline --decorate master..HEAD
 
 	llg = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'
-	ll  = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' -7
+	ll  = log --pretty='%C(auto)%h %C(green)%an%Creset %C(auto)%s %d' -7
 	pll = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' master..HEAD
 
 	d  = ! git difftool --no-prompt 2> /dev/null
@@ -48,3 +48,4 @@
 	tree = ! git llgr --all
 
 	test = ! git-headup test
+	tl = ! git-headup log

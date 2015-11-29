@@ -11,6 +11,8 @@ var unpair = require('./lib/unpair')
 var commands =
 {
 	tag: require('./lib/tag'),
+	log: require('./lib/log'),
+
 	test: test
 }
 
