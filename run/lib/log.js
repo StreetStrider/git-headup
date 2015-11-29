@@ -1,7 +1,26 @@
 
 var git = require('./git/git')
 
+var reset = '%C(reset)'
+
+var pretty =
+[
+	'--pretty',
+	'=',
+	"'",
+	'%C(red)',   '%h', reset,
+	' ',
+	'%C(cyan)',  '%ar', reset,
+	' ',
+	'%C(green)', '%an', reset,
+	' ',
+	'%C(auto)' , '%s',
+	'%C(auto)' , '%d',
+	"'"
+]
+.join('')
+
 module.exports = function log ()
 {
-	return git('log', "--pretty='%C(red)%h%C(reset) %C(cyan)%ar%C(reset) %C(green)%an%C(reset) %C(auto)%s%C(auto)%d'")
+	return git('log', pretty)
 }
