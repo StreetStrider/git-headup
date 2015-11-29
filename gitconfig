@@ -2,7 +2,7 @@
 	st = status -s
 	co = checkout
 	b  = branch -vv
-	t  = tag -n
+	t  = tag -n # node: tag if no `-n`
 	r  = remote -v
 
 	purr = pull --rebase
@@ -10,9 +10,11 @@
 	fett = fetch --prune
 
 	u = add -u
-	amend  = commit --amend
-	amc = commit --amend -C HEAD
+	amend = commit --amend
+	am    = commit --amend # ^alias
+	amc   = commit --amend -C HEAD
 
+	# node: preproc `log`
 	lg = log --oneline --decorate
 	l  = log --oneline --decorate -7
 	pl = log --oneline --decorate master..HEAD
@@ -26,11 +28,15 @@
 
 	c  = log --graph --name-status -1
 	c- = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' --
+	cd = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' -- # ^alias
+
+	# tidy:
 	cf = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
 	df = diff --name-status
 
 	lgrep = ! sh -c 'git lg --grep="${1}" -i' --
 
+	# node: preproc `graph`
 	gr   = log --graph --decorate --name-status
 	grp  = log --graph --decorate --patch
 	lgr  = log --graph --decorate --oneline
