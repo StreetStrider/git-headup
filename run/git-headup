@@ -45,5 +45,5 @@ function notFound (_, cmd)
 
 function test ()
 {
-	return config('log-depth')
+	return config('git-headup.log-depth')
 }
