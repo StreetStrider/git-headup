@@ -3,6 +3,7 @@
 require('console-ultimate/global').replace()
 
 var minimist = require('minimist')
+var run = require('command-promise')
 
 
 var commands =
@@ -20,11 +21,12 @@ function t (args, cmd, argv)
 {
 	if (! argv.length)
 	{
-		console.info('git tag -n 1')
+		return run('git tag -n').then(console.dir)
 	}
 	else
 	{
-		console.info('git tag %j', argv)
+		console.warn(argv)
+		return run('git tag', argv).then(console.dir)
 	}
 }
 

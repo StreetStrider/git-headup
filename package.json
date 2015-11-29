@@ -7,6 +7,7 @@
 	"dependencies":
 	{
 		"console-ultimate": "^2.8.0",
-		"minimist": "^1.2"
+		"minimist":         "^1.2",
+		"command-promise":  "^2"
 	}
 }
