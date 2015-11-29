@@ -4,6 +4,7 @@ require('console-ultimate/global').replace()
 
 var minimist = require('minimist')
 
+
 var commands =
 {
 	t: t
@@ -17,8 +18,14 @@ var args = minimist(argv)
 
 function t (args, cmd, argv)
 {
-	console.dir(argv)
-	console.dir(args)
+	if (! argv.length)
+	{
+		console.info('git tag -n 1')
+	}
+	else
+	{
+		console.info('git tag %j', argv)
+	}
 }
 
 function notFound (_, cmd)
