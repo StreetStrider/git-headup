@@ -6,6 +6,7 @@
 
 	"dependencies":
 	{
-		"console-ultimate": "^2.8.0"
+		"console-ultimate": "^2.8.0",
+		"minimist": "^1.2"
 	}
 }

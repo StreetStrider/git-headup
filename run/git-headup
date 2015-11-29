@@ -2,19 +2,23 @@
 
 require('console-ultimate/global').replace()
 
+var minimist = require('minimist')
+
 var commands =
 {
 	t: t
 }
 
 var cmd  = process.argv[2]
-var args = process.argv.slice(3)
+var argv = process.argv.slice(3)
+var args = minimist(argv)
 
-;(commands[cmd] || notFound)(args, cmd)
+;(commands[cmd] || notFound)(args, cmd, argv)
 
-function t (args, cmd)
+function t (args, cmd, argv)
 {
-	console.info('command t')
+	console.dir(argv)
+	console.dir(args)
 }
 
 function notFound (_, cmd)
