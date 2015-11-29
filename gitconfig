@@ -4,6 +4,7 @@
 	b  = branch -vv
 	#t  = tag -n # node: tag if no `-n`
 	t  = ! git-headup t ${@}
+	t2  = ! git-headup t2 ${@}
 	r  = remote -v
 
 	purr = pull --rebase
