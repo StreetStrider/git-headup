@@ -4,10 +4,13 @@ require('console-ultimate/global').replace()
 
 var minimist = require('minimist')
 
+var config = require('./lib/git/git-config')
+
 
 var commands =
 {
-	t: require('./lib/t')
+	t: require('./lib/t'),
+	test: test
 }
 
 
@@ -34,4 +37,9 @@ function notFound (_, cmd)
 {
 	console.error('command `%s` not found', cmd)
 	process.exit(-1)
+}
+
+function test ()
+{
+	return config('log-depth')
 }

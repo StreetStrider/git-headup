@@ -1,3 +1,6 @@
+[git-headup]
+	log-depth = 7
+
 [alias]
 	st = status -s
 	co = checkout
@@ -43,3 +46,5 @@
 	lgr  = log --graph --decorate --oneline
 	llgr = log --graph --decorate --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'
 	tree = ! git llgr --all
+
+	test = ! git-headup test
