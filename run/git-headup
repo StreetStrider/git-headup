@@ -10,7 +10,7 @@ var unpair = require('./lib/unpair')
 
 var commands =
 {
-	t: require('./lib/t'),
+	tag: require('./lib/tag'),
 	test: test
 }
 

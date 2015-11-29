@@ -5,7 +5,7 @@
 	st = status -s
 	co = checkout
 	b  = branch -vv
-	t  = ! git-headup t
+	t  = ! git-headup tag
 	r  = remote -v
 
 	purr = pull --rebase
