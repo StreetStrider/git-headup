@@ -12,3 +12,7 @@ npm i StreetStrider/git-headup
 [include]
   path = ~/node_modules/git-headup/gitconfig
 ```
+
+```sh
+# add ~/node_modules/git-headup/run to $PATH
+```
