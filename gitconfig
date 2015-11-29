@@ -9,7 +9,9 @@
 	puff = push --force
 	fett = fetch --prune
 
+	a = add .
 	u = add -u
+
 	amend = commit --amend
 	amc   = commit --amend -C HEAD
 
