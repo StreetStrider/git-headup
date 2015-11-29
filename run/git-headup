@@ -15,7 +15,19 @@ var cmd  = process.argv[2]
 var argv = process.argv.slice(3)
 var args = minimist(argv)
 
-;(commands[cmd] || notFound)(args, cmd, argv)
+var result = (commands[cmd] || notFound)(args, cmd, argv)
+
+Promise.resolve(result)
+.then(function (result)
+{
+	process.stdout.write(result)
+	process.exit()
+},
+function (error)
+{
+	console.error(error.message)
+	process.exit(-2)
+})
 
 
 function notFound (_, cmd)

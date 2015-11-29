@@ -1,15 +1,15 @@
 
 var run = require('command-promise')
+var toStdout = run.util.stdout
 
 module.exports = function t (args, cmd, argv)
 {
 	if (! argv.length)
 	{
-		return run('git tag -n').then(console.dir)
+		return run('git tag -n').then(toStdout)
 	}
 	else
 	{
-		console.warn(argv)
-		return run('git tag', argv).then(console.dir)
+		return run('git tag', argv).then(toStdout)
 	}
 }
