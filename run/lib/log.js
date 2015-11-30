@@ -1,26 +1,35 @@
 
 var git = require('./git/git')
 
-var reset = '%C(reset)'
-
-var pretty =
-[
-	'--pretty',
-	'=',
-	"'",
-	'%C(red)',   '%h', reset,
-	' ',
-	'%C(cyan)',  '%ar', reset,
-	' ',
-	'%C(green)', '%an', reset,
-	' ',
-	'%C(auto)' , '%s',
-	'%C(auto)' , '%d',
-	"'"
-]
-.join('')
-
 module.exports = function log ()
 {
-	return git('log', pretty)
+	return git('log --graph', prettikey({ reldate: true, author: true }))
+}
+
+
+function prettikey (format)
+{
+	return "--pretty='" + pretty(format).join('') + "'"
+}
+
+var reset = '%C(reset)'
+
+function pretty (format)
+{
+	var r = []
+
+	r = r.concat([ '%C(red)','%h', reset ])
+
+	if (format.reldate)
+	{
+		r = r.concat(' ', [ '%C(cyan)','%ar', reset ])
+	}
+	if (format.author)
+	{
+		r = r.concat(' ', [ '%C(green)','%an', reset ])
+	}
+
+	r = r.concat(' ', [ '%C(auto)' , '%s', '%C(auto)' , '%d' ])
+
+	return r
 }
