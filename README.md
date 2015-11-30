@@ -3,8 +3,9 @@
 > Head-up display for git in command line
 
 ```sh
-cd
-npm i StreetStrider/git-headup
+# install `git-headup` locally
+$ cd
+$ npm i StreetStrider/git-headup
 ```
 
 ```ini
@@ -14,5 +15,6 @@ npm i StreetStrider/git-headup
 ```
 
 ```sh
-# add ~/node_modules/git-headup/run to $PATH
+# add `~/node_modules/git-headup/run` to $PATH
+$ PATH=~/node_modules/git-headup/run:$PATH
 ```
