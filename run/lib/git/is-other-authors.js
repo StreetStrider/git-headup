@@ -4,6 +4,8 @@ var R = require('ramda')
 var git = require('./git')
 var config = require('./git-config')
 
+var logDepth = require('./log-depth')
+
 module.exports = function isOtherAuthors ()
 {
 	return config('user.name')
@@ -14,12 +16,11 @@ module.exports = function isOtherAuthors ()
 			return true /* may be other authors */
 		}
 
-		return config('git-headup.log-depth')
-		.then(Number)
+		return logDepth()
 		.then(function (depth)
 		{
 
-		if (! depth)
+		if (! Number.isFinite(depth))
 		{
 			return true /* may be other authors */
 		}
