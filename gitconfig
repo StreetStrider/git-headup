@@ -2,23 +2,33 @@
 	log-depth = 7
 
 [alias]
+	# Status:
 	st = status -s
-	co = checkout
-	b  = branch -vv
-	t  = ! git-headup tag
-	r  = remote -v
 
-	purr = pull --rebase
-	puff = push --force
-	fett = fetch --prune
+	# Working copy:
+	d  = ! git difftool --no-prompt 2> /dev/null
+	ds = ! git d --staged
 
+	# Commit:
 	a = add .
 	u = add -u
 
 	amend = commit --amend
 	amc   = commit --amend -C HEAD
 
-	# node: preproc `log`
+	# Branches:
+	co = checkout
+	b  = branch -vv
+	t  = ! git-headup tag
+	r  = remote -v
+
+	# Sync:
+	purr = pull --rebase
+	puff = push --force
+	fett = fetch --prune
+
+	# History:
+	# todo: preproc `log`
 	lg = log --oneline --decorate
 	l  = log --oneline --decorate -7
 	pl = log --oneline --decorate master..HEAD
@@ -27,20 +37,7 @@
 	ll  = log --pretty='%C(auto)%h %C(green)%an%Creset %C(auto)%s %d' -7
 	pll = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' master..HEAD
 
-	d  = ! git difftool --no-prompt 2> /dev/null
-	ds = ! git d --staged
-
-	c  = log --graph --name-status -1
-	c- = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' --
-	cd = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' -- # ^alias
-
-	# tidy:
-	cf = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
-	df = diff --name-status
-
-	lgrep = ! sh -c 'git lg --grep="${1}" -i' --
-
-	# node: preproc `graph`
+	# todo: preproc `graph`
 	gr   = log --graph --decorate --name-status
 	grp  = log --graph --decorate --patch
 	lgr  = log --graph --decorate --oneline
@@ -49,3 +46,13 @@
 
 	test = ! git-headup test
 	tl = ! git-headup log
+
+	# todo: tidy
+	c  = log --graph --name-status -1
+	c- = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' --
+	cd = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' -- # ^alias
+
+	cf = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
+	df = diff --name-status
+
+	lgrep = ! sh -c 'git lg --grep="${1}" -i' --
