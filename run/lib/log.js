@@ -12,7 +12,17 @@ module.exports = function log (_, _, argv)
 	{
 		depth = '-' + depth
 
-		return git('log', depth, prettikey({}), argv)
+		switch (mode)
+		{
+			case 'l':
+			return git('log', depth, prettikey({}), argv)
+
+			case 'll':
+			return git('log', depth, prettikey({ author: true }), argv)
+
+			default:
+			throw new Error('not all cases covered')
+		}
 	})
 
 	//return git('log --graph', prettikey({ reldate: true, author: true }))

@@ -28,14 +28,14 @@
 	fett = fetch --prune
 
 	# History:
-	l = ! git-headup log l
+	l  = ! git-headup log l
+	ll = ! git-headup log ll
 
 	# todo: preproc `log`
 	lg = log --oneline --decorate
 	pl = log --oneline --decorate master..HEAD
 
 	llg = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'
-	ll  = log --pretty='%C(auto)%h %C(green)%an%Creset %C(auto)%s %d' -7
 	pll = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' master..HEAD
 
 	# todo: preproc `graph`
