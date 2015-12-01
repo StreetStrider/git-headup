@@ -1,11 +1,10 @@
 
 var config = require('./git-config')
 
-var byDefault = require('ramda').defaultTo(7)
+var R = require('ramda')
+var unwrap = R.pipe(Number, R.defaultTo(7))
 
 module.exports = function logDepth ()
 {
-	return config('git-headup.log-depth')
-	.then(Number)
-	.then(byDefault)
+	return config('git-headup.log-depth').then(unwrap)
 }
