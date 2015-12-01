@@ -39,7 +39,7 @@
 
 	# todo: preproc `graph`
 	gr   = log --graph --decorate --name-status
-	grp  = log --graph --decorate --patch
+
 	lgr  = log --graph --decorate --oneline
 	llgr = log --graph --decorate --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'
 	tree = ! git llgr --all
