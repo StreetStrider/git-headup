@@ -45,7 +45,7 @@ function pretty (format)
 
 	if (format.reldate)
 	{
-		r = r.concat(' ', [ '%C(green)','%ar', reset ])
+		r = r.concat(' ', [ '%C(green)', '[','%ar', ']', reset ])
 	}
 	if (format.author)
 	{
