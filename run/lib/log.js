@@ -45,11 +45,11 @@ function pretty (format)
 
 	if (format.reldate)
 	{
-		r = r.concat(' ', [ '%C(magenta)','%ar', reset ])
+		r = r.concat(' ', [ '%C(green)','%ar', reset ])
 	}
 	if (format.author)
 	{
-		r = r.concat(' ', [ '%C(green)','%an', reset ])
+		r = r.concat(' ', [ '%C(blue)','%an', reset ])
 	}
 
 	r = r.concat(' ', [ '%C(auto)' , '%s' ])
