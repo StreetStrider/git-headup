@@ -1,5 +1,5 @@
 
-var config = require('./config')
+var config = require('./git-config')
 
 var byDefault = require('ramda').defaultTo(7)
 
