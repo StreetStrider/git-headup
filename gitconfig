@@ -28,9 +28,10 @@
 	fett = fetch --prune
 
 	# History:
+	l = ! git-headup log l
+
 	# todo: preproc `log`
 	lg = log --oneline --decorate
-	l  = log --oneline --decorate -7
 	pl = log --oneline --decorate master..HEAD
 
 	llg = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'

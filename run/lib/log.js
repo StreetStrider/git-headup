@@ -1,9 +1,21 @@
 
 var git = require('./git/git')
+var logDepth = require('./git/log-depth')
 
-module.exports = function log ()
+module.exports = function log (_, _, argv)
 {
-	return git('log --graph', prettikey({ reldate: true, author: true }))
+	var mode = argv[0]
+	argv = argv.slice(1)
+
+	return logDepth()
+	.then(function (depth)
+	{
+		depth = '-' + depth
+
+		return git('log', depth, prettikey({}), argv)
+	})
+
+	//return git('log --graph', prettikey({ reldate: true, author: true }))
 }
 
 
