@@ -15,10 +15,10 @@ module.exports = function log (_, _, argv)
 		switch (mode)
 		{
 			case 'l':
-			return git('log', depth, prettikey({}), argv)
+			return git('log', depth, prettikey({ reldate: true }), argv)
 
 			case 'll':
-			return git('log', depth, prettikey({ author: true }), argv)
+			return git('log', depth, prettikey({ reldate: true, author: true }), argv)
 
 			default:
 			throw new Error('not all cases covered')
