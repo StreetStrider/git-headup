@@ -19,6 +19,7 @@ function pretty (format)
 	var r = []
 
 	r = r.concat([ '%C(red)','%h', reset ])
+	r = r.concat([ '%C(auto)' , '%d', reset ])
 
 	if (format.reldate)
 	{
@@ -29,7 +30,7 @@ function pretty (format)
 		r = r.concat(' ', [ '%C(green)','%an', reset ])
 	}
 
-	r = r.concat(' ', [ '%C(auto)' , '%s', '%C(auto)' , '%d' ])
+	r = r.concat(' ', [ '%C(auto)' , '%s' ])
 
 	return r
 }
