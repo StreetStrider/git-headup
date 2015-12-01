@@ -23,7 +23,7 @@ function pretty (format)
 
 	if (format.reldate)
 	{
-		r = r.concat(' ', [ '%C(cyan)','%ar', reset ])
+		r = r.concat(' ', [ '%C(magenta)','%ar', reset ])
 	}
 	if (format.author)
 	{
