@@ -43,13 +43,13 @@ function pretty (format)
 	r = r.concat([ '%C(red)','%h', reset ])
 	r = r.concat([ '%C(auto)' , '%d', reset ])
 
-	if (format.reldate)
-	{
-		r = r.concat(' ', [ '%C(green)', '[','%ar', ']', reset ])
-	}
 	if (format.author)
 	{
 		r = r.concat(' ', [ '%C(blue)','%an', reset ])
+	}
+	if (format.reldate)
+	{
+		r = r.concat(' ', [ '%C(green)', '[','%ar', ']', reset ])
 	}
 
 	r = r.concat(' ', [ '%C(auto)' , '%s' ])
