@@ -1,4 +1,5 @@
 
+var R = require('ramda')
 var spawn = require('child_process').spawn
 
 var git = require('./git/git')
@@ -14,20 +15,18 @@ module.exports = function log (_, _, argv)
 	{
 		depth = '-' + depth
 
-		console.log(depth)
-
 		switch (mode)
 		{
 			case 'l':
-			spawn('git', [ 'log', depth, prettikey({ reldate: true }) ].concat(argv), { stdio: 'inherit' })
+			logspawn(depth, prettikey({ reldate: true }), argv)
 			return null
 
 			case 'll':
-			spawn('git', [ 'log', depth, prettikey({ reldate: true, author: true }) ].concat(argv), { stdio: 'inherit' })
+			logspawn(depth, prettikey({ reldate: true, author: true }), argv)
 			return null
 
 			case 'g':
-			spawn('git', [ 'log', '--graph', prettikey({ reldate: true, author: true }) ].concat(argv), { stdio: 'inherit' })
+			logspawn('--graph', prettikey({ reldate: true, author: true }), argv)
 			return null
 
 			default:
@@ -36,6 +35,16 @@ module.exports = function log (_, _, argv)
 	})
 }
 
+
+function logspawn ()
+{
+	var args = R.slice(0, -1, arguments)
+	var argv = R.last(arguments) || []
+
+	args = [ 'log' ].concat(args, argv)
+
+	return spawn('git', args, { stdio: 'inherit' })
+}
 
 function prettikey (format)
 {
