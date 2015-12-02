@@ -1,0 +1,24 @@
+#! /bin/sh
+
+style__reset='%C(reset)'
+
+style__auto='%C(auto)'
+
+style__red='%C(red)'
+style__green='%C(green)'
+style__blue='%C(blue)'
+
+format__hash="${style__red}%h${style__reset}"
+format__decorate="${style__auto}%d${style__reset}"
+format__reldate="${style__green}[%ar]${style__reset}"
+format__msg="${style__auto}%s${style__reset}"
+
+mode=${1}
+shift
+
+case "${mode}" in
+	"l")
+	git log -7 --pretty="${format__hash}${format__decorate} ${format__reldate} ${format__msg}"
+	;;
+
+esac
