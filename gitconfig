@@ -30,6 +30,7 @@
 	# History:
 	l  = ! git-headup log l
 	ll = ! git-headup log ll
+	g  = ! git-headup log g
 
 	# todo: preproc `log`
 	lg = log --oneline --decorate

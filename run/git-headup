@@ -26,6 +26,8 @@ var result = (commands[cmd] || notFound)(args, cmd, argv)
 Promise.resolve(result)
 .then(function (result)
 {
+	if (result == null) return
+
 	result = unpair(result)
 	result = String(result)
 

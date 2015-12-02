@@ -1,4 +1,6 @@
 
+var spawn = require('child_process').spawn
+
 var git = require('./git/git')
 var logDepth = require('./git/log-depth')
 
@@ -12,26 +14,32 @@ module.exports = function log (_, _, argv)
 	{
 		depth = '-' + depth
 
+		console.log(depth)
+
 		switch (mode)
 		{
 			case 'l':
-			return git('log', depth, prettikey({ reldate: true }), argv)
+			spawn('git', [ 'log', depth, prettikey({ reldate: true }) ].concat(argv), { stdio: 'inherit' })
+			return null
 
 			case 'll':
-			return git('log', depth, prettikey({ reldate: true, author: true }), argv)
+			spawn('git', [ 'log', depth, prettikey({ reldate: true, author: true }) ].concat(argv), { stdio: 'inherit' })
+			return null
+
+			case 'g':
+			spawn('git', [ 'log', '--graph', prettikey({ reldate: true, author: true }) ].concat(argv), { stdio: 'inherit' })
+			return null
 
 			default:
 			throw new Error('not all cases covered')
 		}
 	})
-
-	//return git('log --graph', prettikey({ reldate: true, author: true }))
 }
 
 
 function prettikey (format)
 {
-	return "--pretty='" + pretty(format).join('') + "'"
+	return "--pretty=" + pretty(format).join('')
 }
 
 var reset = '%C(reset)'
