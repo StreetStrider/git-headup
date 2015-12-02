@@ -4,8 +4,7 @@ require('console-ultimate/global').replace()
 
 var minimist = require('minimist')
 
-var config = require('./lib/git/git-config')
-var unpair = require('./lib/unpair')
+var capture = require('./lib/capture')
 
 
 var commands =
@@ -23,15 +22,13 @@ var args = minimist(argv)
 
 var result = (commands[cmd] || notFound)(args, cmd, argv)
 
-Promise.resolve(result)
+capture(result)
 .then(function (result)
 {
-	if (result == null) return
-
-	result = unpair(result)
-	result = String(result)
-
-	process.stdout.write(result)
+	if (result != null)
+	{
+		process.stdout.write(result)
+	}
 	process.exit()
 },
 function (error)

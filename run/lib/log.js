@@ -18,16 +18,13 @@ module.exports = function log (_, _, argv)
 		switch (mode)
 		{
 			case 'l':
-			logspawn(depth, prettikey({ reldate: true }), argv)
-			return null
+			return logspawn(depth, prettikey({ reldate: true }), argv)
 
 			case 'll':
-			logspawn(depth, prettikey({ reldate: true, author: true }), argv)
-			return null
+			return logspawn(depth, prettikey({ reldate: true, author: true }), argv)
 
 			case 'g':
-			logspawn('--graph', prettikey({ reldate: true, author: true }), argv)
-			return null
+			return logspawn('--graph', prettikey({ reldate: true, author: true }), argv)
 
 			default:
 			throw new Error('not all cases covered')
