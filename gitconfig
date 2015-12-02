@@ -28,26 +28,10 @@
 	fett = fetch --prune
 
 	# History:
-	l  = ! git-headup log l
-	ll = ! git-headup log ll
-	g  = ! git-headup log g
-
-	# todo: preproc `log`
-	lg = log --oneline --decorate
-	pl = log --oneline --decorate master..HEAD
-
-	llg = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'
-	pll = log --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d' master..HEAD
-
-	# todo: preproc `graph`
-	gr   = log --graph --decorate --name-status
-
-	lgr  = log --graph --decorate --oneline
-	llgr = log --graph --decorate --pretty='%C(yellow)%h%Creset %C(green)%an%Creset %s %d'
-	tree = ! git llgr --all
-
-	test = ! git-headup test
-	tl = ! git-headup log
+	l  = ! git-headup log l  # for solo work
+	ll = ! git-headup log ll # for coop work
+	g  = ! git-headup log g  # advanced long graphic log
+	gr = log --graph --decorate --relative-date --name-status # advanced log, maximum info
 
 	# todo: tidy
 	c  = log --graph --name-status -1
@@ -58,3 +42,5 @@
 	df = diff --name-status
 
 	lgrep = ! sh -c 'git lg --grep="${1}" -i' --
+
+	test = ! git-headup test
