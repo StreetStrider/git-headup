@@ -41,5 +41,3 @@
 
 	# todo: tidy
 	lgrep = ! sh -c 'git lg --grep="${1}" -i' --
-
-	test = ! git-headup test

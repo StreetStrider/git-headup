@@ -9,10 +9,10 @@ var capture = require('./lib/capture')
 
 var commands =
 {
-	tag: require('./lib/tag'),
-	log: require('./lib/log'),
+	tag: require('./lib/tag')
 
-	test: test
+	// log: require('./lib/log'),
+	// test: test
 }
 
 
@@ -46,5 +46,5 @@ function notFound (_, cmd)
 
 function test ()
 {
-	return require('./lib/git/is-other-authors')()
+
 }
