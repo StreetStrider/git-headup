@@ -37,8 +37,10 @@
 	c  = ! git gr -1
 	c- = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' --
 	cf = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
-	df = diff --name-status
 
+	f = diff --name-status
+
+	# todo: tidy
 	lgrep = ! sh -c 'git lg --grep="${1}" -i' --
 
 	test = ! git-headup test
