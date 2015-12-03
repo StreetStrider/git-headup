@@ -5,7 +5,8 @@
 	"bin":
 	{
 		"git-headup":     "run/git-headup",
-		"git-headup-log": "run/git-headup-log"
+		"git-headup-log": "run/git-headup-log",
+		"git-headup-tag": "run/git-headup-tag"
 	},
 
 	"dependencies":

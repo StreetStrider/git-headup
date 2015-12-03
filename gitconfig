@@ -19,7 +19,7 @@
 	# Branches:
 	co = checkout
 	b  = branch -vv
-	t  = ! git-headup tag
+	t  = ! git-headup-tag
 	r  = remote -v
 
 	# Sync:
