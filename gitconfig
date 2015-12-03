@@ -29,7 +29,7 @@
 
 	# History:
 	l  = ! git-headup-log l  # for solo work
-	ll = ! git-headup log ll # for coop work
+	ll = ! git-headup-log ll # for coop work
 	g  = ! git-headup log g  # advanced long graphic log
 	gr = log --graph --decorate --relative-date --name-status # advanced log, maximum info
 
