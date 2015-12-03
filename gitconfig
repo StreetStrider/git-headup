@@ -1,5 +1,5 @@
-#[git-headup]
-#	log-depth = 7
+[git-headup]
+	log-depth = 7
 
 [alias]
 	# Status:
