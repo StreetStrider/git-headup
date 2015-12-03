@@ -36,8 +36,6 @@
 	# Info
 	c  = ! git gr -1
 	c- = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' --
-	cd = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD}' -- # ^alias
-
 	cf = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
 	df = diff --name-status
 
