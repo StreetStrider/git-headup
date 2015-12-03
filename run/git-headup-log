@@ -14,6 +14,8 @@ format__reldate="${style__green}[%ar]${style__reset}"
 format__author="${style__blue}%an${style__reset}"
 format__msg="${style__auto}%s${style__reset}"
 
+pretty__coop="${format__hash}${format__decorate} ${format__author} ${format__reldate} ${format__msg}"
+
 mode=${1}
 shift
 
@@ -23,7 +25,11 @@ case "${mode}" in
 	;;
 
 	"ll")
-	git log -7 --pretty="${format__hash}${format__decorate} ${format__author} ${format__reldate} ${format__msg}"
+	git log -7 --pretty="${pretty__coop}"
+	;;
+
+	"g")
+	git log --graph --pretty="${pretty__coop}"
 	;;
 
 esac
