@@ -2,15 +2,29 @@
 
 var clc = require('cli-color')
 
-var pipe  = '|'
-var space = ' '
+var git = require('./lib/git/git')
+var hud = require('./lib/hud/hud')
+
+
+var line__cwd = clc.bold(hud.pipe) + hud.space + clc.bold(process.cwd())
+var line__git = git('rev-parse --is-inside-work-tree')
+
+Promise.all
+([
+	line__cwd,
+	line__git
+])
+.then(function (lines)
+{
+	lines.forEach(writeln)
+})
 
 function write (string)
 {
 	process.stdout.write(string, 'utf-8')
 }
 
-var nl = '\n'
-
-var output = clc.bold(pipe) + space + clc.bold(process.cwd()) + nl
-write(output)
+function writeln (string)
+{
+	write(string + hud.nl)
+}
