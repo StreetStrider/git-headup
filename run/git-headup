@@ -3,7 +3,7 @@
 var clc = require('cli-color')
 
 var git = require('./lib/git/git')
-var isgit = require('./lib/git/is-git')
+var isgit = require('./lib/git/is')
 
 var hud = require('./lib/hud/hud')
 
