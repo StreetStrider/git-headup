@@ -1,0 +1,8 @@
+#! /bin/sh
+
+PROMPT=$(echo -en "\033[1m↳\033[22m ")
+
+precmd ()
+{
+	echo "\033[1m| ${USER}:${HOST}\033[22m"
+}
