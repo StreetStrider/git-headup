@@ -7,7 +7,7 @@ var isgit = require('./lib/git/is')
 
 var hud = require('./lib/hud/hud')
 
-var cwd = require('./lib/cwd')
+var cwd = require('./lib/hud/cwd')
 
 
 writeln(cwd())

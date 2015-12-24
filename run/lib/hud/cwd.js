@@ -3,7 +3,7 @@ var clc = require('cli-color')
 var len = clc.getStrippedLength
 var slice = clc.slice
 
-var hud = require('./hud/hud')
+var hud = require('./hud')
 
 module.exports = function ()
 {
