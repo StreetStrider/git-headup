@@ -7,19 +7,11 @@ var isgit = require('./lib/git/is-git')
 
 var hud = require('./lib/hud/hud')
 
+var cwd = require('./lib/cwd')
 
-var line__cwd = clc.bold(hud.pipe) + hud.space + clc.bold(process.cwd())
-var line__git = isgit()
 
-Promise.all
-([
-	line__cwd,
-	line__git
-])
-.then(function (lines)
-{
-	lines.forEach(writeln)
-})
+writeln(cwd())
+
 
 function write (string)
 {
