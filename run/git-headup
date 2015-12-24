@@ -1,47 +1,16 @@
 #! /usr/bin/env node
 
-require('console-ultimate/global').replace()
+var clc = require('cli-color')
 
-var minimist = require('minimist')
+var pipe  = '|'
+var space = ' '
 
-var capture = require('./lib/capture')
-
-
-var commands =
+function write (string)
 {
-	// test: test
+	process.stdout.write(string, 'utf-8')
 }
 
+var nl = '\n'
 
-var cmd  = process.argv[2]
-var argv = process.argv.slice(3)
-var args = minimist(argv)
-
-var result = (commands[cmd] || notFound)(args, cmd, argv)
-
-capture(result)
-.then(function (result)
-{
-	if (result != null)
-	{
-		process.stdout.write(result)
-	}
-	process.exit()
-},
-function (error)
-{
-	console.error(error.message)
-	process.exit(-2)
-})
-
-
-function notFound (_, cmd)
-{
-	console.error('command `%s` not found', cmd)
-	process.exit(-1)
-}
-
-function test ()
-{
-
-}
+var output = clc.bold(pipe) + space + clc.bold(process.cwd()) + nl
+write(output)
