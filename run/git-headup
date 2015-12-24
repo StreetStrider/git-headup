@@ -1,16 +1,14 @@
 #! /usr/bin/env node
 
-var clc = require('cli-color')
-
-var git = require('./lib/git/git')
-var isgit = require('./lib/git/is')
-
 var hud = require('./lib/hud/hud')
 
 var cwd = require('./lib/hud/cwd')
+var git = require('./lib/hud/git')
 
 
-writeln(cwd())
+Promise.resolve(cwd()).then(writeln)
+.then(git).then(maybe(writeln))
+.catch(console.error)
 
 
 function write (string)
@@ -21,4 +19,12 @@ function write (string)
 function writeln (string)
 {
 	write(string + hud.nl)
+}
+
+function maybe (fn)
+{
+	return function (v)
+	{
+		return v && fn(v)
+	}
 }
