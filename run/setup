@@ -1,11 +1,7 @@
 #! /bin/sh
 
-space=' '
-bold='\033[1m'
-reset='\033[22m'
-
-PROMPT=$(echo -en "${bold}↳${reset}${space}")
-PS2=$(echo -en "${bold}…${reset}${space}")
+PROMPT='%B↳%b '
+PS2='%B…%b '
 
 cd $(dirname ${0})
 run=$(pwd)
