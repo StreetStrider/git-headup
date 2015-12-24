@@ -1,8 +1,13 @@
 #! /bin/sh
 
-PROMPT=$(echo -en "\033[1m↳\033[22m ")
+space=' '
+bold='\033[1m'
+reset='\033[22m'
+
+PROMPT=$(echo -en "${bold}↳${reset}${space}")
+PS2=$(echo -en "${bold}…${reset}${space}")
 
 precmd ()
 {
-	echo "\033[1m| ${USER}:${HOST}\033[22m"
+	echo "${bold}| ${USER}:${HOST}${reset}"
 }
