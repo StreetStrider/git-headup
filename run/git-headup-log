@@ -23,15 +23,15 @@ shift
 
 case "${mode}" in
 	"l")
-	git log -${logDepth} --pretty="${format__hash}${format__decorate} ${format__reldate} ${format__msg}"
+	git log -${logDepth} --pretty="${format__hash}${format__decorate} ${format__reldate} ${format__msg}" ${@}
 	;;
 
 	"ll")
-	git log -${logDepth} --pretty="${pretty__coop}"
+	git log -${logDepth} --pretty="${pretty__coop}" ${@}
 	;;
 
 	"g")
-	git log --graph --pretty="${pretty__coop}"
+	git log --graph --pretty="${pretty__coop}" ${@}
 	;;
 
 esac
