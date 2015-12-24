@@ -33,7 +33,7 @@
 	g  = ! git-headup-log g  # advanced long graphic log
 	gr = log --graph --decorate --relative-date --name-status # advanced log, maximum info
 
-	lgrep = ! sh -c 'git log --oneline --grep="${1}" -i | grep --color "${1}"' --
+	lgrep = ! sh -c 'git ll --grep="${1}" -i | grep --color "${1}"' --
 
 	# Info
 	c  = ! git gr -1
