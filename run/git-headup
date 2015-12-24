@@ -3,11 +3,13 @@
 var clc = require('cli-color')
 
 var git = require('./lib/git/git')
+var isgit = require('./lib/git/is-git')
+
 var hud = require('./lib/hud/hud')
 
 
 var line__cwd = clc.bold(hud.pipe) + hud.space + clc.bold(process.cwd())
-var line__git = git('rev-parse --is-inside-work-tree')
+var line__git = isgit()
 
 Promise.all
 ([
