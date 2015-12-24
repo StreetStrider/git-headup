@@ -12,11 +12,6 @@
 	"dependencies":
 	{
 		"cli-color": "^1.1.0",
-
-		"console-ultimate": "^2.8.0",
-		"minimist":         "^1.2",
-		"command-promise":  "^2",
-
-		"ramda": "^0.18.0"
+		"command-promise": "^2"
 	}
 }
