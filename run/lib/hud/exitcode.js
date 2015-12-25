@@ -2,8 +2,7 @@
 var clc = require('cli-color')
 var bold = clc.bold
 
-var pipe = require('ramda').pipe
-var style = pipe(clc.bgRed, clc.whiteBright)
+var style = clc.bgRed.whiteBright
 
 var hud = require('./hud')
 
