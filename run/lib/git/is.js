@@ -6,16 +6,10 @@ var True  = value(true)
 var False = value(false)
 
 var run = require('command-promise')
-var git = require('./git')
+var rev = require('./rev')
 
 
 var is = module.exports = {}
-
-function rev ()
-{
-	return git('rev-parse', arguments)
-}
-
 
 is.git = function ()
 {
