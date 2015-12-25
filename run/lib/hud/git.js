@@ -4,6 +4,7 @@ var clc   = require('cli-color')
 var bold = clc.bold
 
 var style__bare = clc.red.underline
+var style__gitdir = clc.red.underline
 var style__rebase = clc.bgRed.whiteBright
 var style__branch = clc.green
 var style__detached = clc.magenta
@@ -36,6 +37,7 @@ function output ()
 		branch(),
 		is.bare(),
 		is.tree(),
+		is.gitdir(),
 		is.rebase()
 	])
 	.then(function (_)
@@ -44,7 +46,8 @@ function output ()
 		var branch = _[1]
 		var isBare = _[2]
 		var isTree = _[3]
-		var isRebase = _[4]
+		var isGitdir = _[4]
+		var isRebase = _[5]
 
 		var line = bold(hud.pipe) + hud.space + bold('git')
 
@@ -52,6 +55,11 @@ function output ()
 		{
 			line = line + hud.space + style__bare('bare')
 		}
+		else if (isGitdir)
+		{
+			line = line + hud.space + style__gitdir('.git')
+		}
+
 
 		line = line + hud.space + hud.bull + hud.space
 

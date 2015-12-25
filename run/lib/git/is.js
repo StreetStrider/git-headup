@@ -26,6 +26,11 @@ is.tree = function ()
 	return rev('--is-inside-work-tree').then(troo)
 }
 
+is.gitdir = function ()
+{
+	return rev('--is-inside-git-dir').then(troo)
+}
+
 is.rebase = function ()
 {
 	return rev('--show-toplevel')
