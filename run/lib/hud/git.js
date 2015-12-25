@@ -8,16 +8,12 @@ var hud = require('./hud')
 var git = require('../git/git')
 var is  = require('../git/is')
 
+var maybe = require('../maybe')
+
+
 module.exports = function ()
 {
-	return is.git()
-	.then(function (so)
-	{
-		if (so)
-		{
-			return print()
-		}
-	})
+	return is.git().then(maybe(print))
 }
 
 function print ()

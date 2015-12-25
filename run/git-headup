@@ -5,6 +5,8 @@ var hud = require('./lib/hud/hud')
 var cwd = require('./lib/hud/cwd')
 var git = require('./lib/hud/git')
 
+var maybe = require('./lib/maybe')
+
 
 Promise.resolve(cwd()).then(writeln)
 .then(git).then(maybe(writeln))
@@ -19,12 +21,4 @@ function write (string)
 function writeln (string)
 {
 	write(string + hud.nl)
-}
-
-function maybe (fn)
-{
-	return function (v)
-	{
-		return v && fn(v)
-	}
 }
