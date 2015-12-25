@@ -3,6 +3,7 @@ var clc   = require('cli-color')
 
 var bold = clc.bold
 
+var style__bare = clc.red.underline
 var style__rebase = clc.bgRed.whiteBright
 var style__branch = clc.green
 var style__detached = clc.magenta
@@ -46,6 +47,11 @@ function output ()
 		var isRebase = _[4]
 
 		var line = bold(hud.pipe) + hud.space + bold('git')
+
+		if (isBare)
+		{
+			line = line + hud.space + style__bare('bare')
+		}
 
 		line = line + hud.space + hud.bull + hud.space
 
