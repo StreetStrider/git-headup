@@ -2,11 +2,12 @@
 var clc   = require('cli-color')
 
 var bold = clc.bold
-var red = clc.red
-var green = clc.green
-var magenta = clc.magenta
 
 var style__rebase = clc.bgRed.whiteBright
+var style__branch = clc.green
+var style__detached = clc.magenta
+var style__rev = clc.red
+var style__empty = clc.magenta
 
 var len   = clc.getStrippedLength
 var slice = clc.slice
@@ -56,20 +57,20 @@ function output ()
 			}
 			else if (branch)
 			{
-				line = line + green(branch)
+				line = line + style__branch(branch)
 			}
 			else
 			{
-				line = line + magenta(hud.brkt('HEAD'))
+				line = line + style__detached(hud.brkt('HEAD'))
 			}
 
 			line = line + hud.space + hud.bull + hud.space
 
-			line = line + red(head)
+			line = line + style__rev(head)
 		}
 		else
 		{
-			line = line + magenta('before first commit')
+			line = line + style__empty('before first commit')
 		}
 
 		//  
