@@ -8,17 +8,6 @@ var git = require('./lib/hud/git')
 var maybe = require('./lib/maybe')
 
 
-Promise.resolve(cwd()).then(writeln)
-.then(git).then(maybe(writeln))
+Promise.resolve(cwd()).then(hud.writeln)
+.then(git).then(maybe(hud.writeln))
 .catch(console.error)
-
-
-function write (string)
-{
-	process.stdout.write(string, 'utf-8')
-}
-
-function writeln (string)
-{
-	write(string + hud.nl)
-}
