@@ -11,6 +11,9 @@ var style__detached = clc.magenta
 var style__rev = clc.red
 var style__empty = clc.yellow
 
+var style__author = clc.blue
+var style__msg = clc.italic
+
 var len   = clc.getStrippedLength
 var slice = clc.slice
 
@@ -20,6 +23,7 @@ var git = require('../git/git')
 var is  = require('../git/is')
 var head = require('../git/rev-head')
 var branch = require('../git/branch')
+var loglast = require('../git/log-last')
 
 
 var maybe = require('../maybe')
@@ -81,14 +85,39 @@ function output ()
 			line = line + hud.space + hud.bull + hud.space
 
 			line = line + style__rev(head)
+
+			return Promise.all([
+				loglast.author(),
+				loglast.msg()
+			])
+			.then(function (_)
+			{
+				var author = _[0]
+				var msg = _[1]
+
+				line = line + hud.space + hud.bull + hud.space
+
+				line = line + style__author(author) + ',' + hud.space + style__msg(msg)
+
+				return line
+			})
 		}
 		else
 		{
 			line = line + style__empty('before first commit')
-		}
 
-		//  
-		console.log('| head: %s, branch: %s, bare: %s, tree: %s, rebase: %s', _[0], _[1], _[2], _[3], _[4])
+			return line
+		}
+	})
+	.then(function (line)
+	{
+		var cols = process.stdout.columns
+
+		if (len(line) > cols)
+		{
+			line = slice(line, 0, cols - 3)
+			line = line + hud.ell + hud.space
+		}
 
 		return line
 	})
