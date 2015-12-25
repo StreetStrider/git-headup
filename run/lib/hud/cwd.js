@@ -1,4 +1,9 @@
 
+var toplevel = require('../git/toplevel')
+var maybe = require('../maybe')
+var relative = require('path').relative
+var tildify = require('tildify')
+
 var clc   = require('cli-color')
 
 var bold = clc.bold
@@ -6,10 +11,6 @@ var red  = clc.red
 
 var len   = clc.getStrippedLength
 var slice = clc.slice
-
-var toplevel = require('../git/toplevel')
-var maybe = require('../maybe')
-var relative = require('path').relative
 
 var hud = require('./hud')
 
@@ -26,8 +27,13 @@ module.exports = function ()
 		{
 			cwd = cwd.slice(0, - rel.length) + red(cwd.slice(- rel.length))
 		}
+
 	}))
 	.then(function ()
+	{
+		return tildify(cwd)
+	})
+	.then(function (cwd)
 	{
 		var line = bold(hud.pipe) + hud.space + bold(cwd)
 

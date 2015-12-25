@@ -13,6 +13,7 @@
 	{
 		"cli-color": "^1.1.0",
 		"command-promise": "^2",
-		"ramda": "^0.19"
+		"ramda": "^0.19",
+		"tildify": "^1.1.2"
 	}
 }
