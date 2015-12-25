@@ -4,6 +4,7 @@ var hud = require('./lib/hud/hud')
 
 var cwd = require('./lib/hud/cwd')
 var git = require('./lib/hud/git')
+var exitcode = require('./lib/hud/exitcode')
 
 var maybe = require('./lib/maybe')
 
@@ -11,4 +12,5 @@ var maybe = require('./lib/maybe')
 Promise.resolve()
 .then(cwd).then(hud.writeln)
 .then(git).then(maybe(hud.writeln))
+.then(exitcode).then(maybe(hud.writeln))
 .catch(console.error)

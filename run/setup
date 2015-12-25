@@ -8,5 +8,5 @@ run=$(pwd)
 
 precmd ()
 {
-	"${run}/git-headup"
+	"${run}/git-headup" ${?}
 }
