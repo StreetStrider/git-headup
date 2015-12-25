@@ -7,6 +7,12 @@ hud.nl    = '\n'
 hud.ell   = '…'
 hud.bull  = '•'
 
+hud.brkt = function (string)
+{
+	return '⟨' + string + '⟩'
+}
+
+
 var write = hud.write = function (string)
 {
 	process.stdout.write(string, 'utf-8')

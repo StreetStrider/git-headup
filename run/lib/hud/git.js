@@ -6,6 +6,8 @@ var red = clc.red
 var green = clc.green
 var magenta = clc.magenta
 
+var style__rebase = clc.bgRed.whiteBright
+
 var len   = clc.getStrippedLength
 var slice = clc.slice
 
@@ -48,13 +50,17 @@ function output ()
 
 		if (head)
 		{
-			if (branch)
+			if (isRebase)
+			{
+				line = line + style__rebase(hud.brkt('REBASE'))
+			}
+			else if (branch)
 			{
 				line = line + green(branch)
 			}
 			else
 			{
-				line = line + magenta('⟨HEAD⟩')
+				line = line + magenta(hud.brkt('HEAD'))
 			}
 
 			line = line + hud.space + hud.bull + hud.space
