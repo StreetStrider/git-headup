@@ -17,15 +17,27 @@ var maybe = require('../maybe')
 
 module.exports = function ()
 {
-	return is.git().then(maybe(print))
+	return is.git().then(maybe(output))
 }
 
-function print ()
+function output ()
 {
-	return git('rev-parse --short HEAD')
+	return Promise.all([
+		git('rev-parse --short HEAD'),
+		is.bare(),
+		is.tree(),
+		is.rebase()
+	])
+	.then(function (_)
+	{
+		console.log('| rev: %s, bare: %s, tree: %s, rebase: %s', _[0], _[1], _[2], _[3])
+	})
+
 	.then(function (rev)
 	{
-		var line = bold(hud.pipe) + hud.space + bold('git') + hud.space + red(rev)
+		var line = bold(hud.pipe) + hud.space + bold('git')
+
+		// + hud.space + red(rev)
 
 		return line
 	})
