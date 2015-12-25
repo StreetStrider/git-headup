@@ -7,7 +7,7 @@ var style__rebase = clc.bgRed.whiteBright
 var style__branch = clc.green
 var style__detached = clc.magenta
 var style__rev = clc.red
-var style__empty = clc.magenta
+var style__empty = clc.yellow
 
 var len   = clc.getStrippedLength
 var slice = clc.slice
