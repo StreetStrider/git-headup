@@ -7,6 +7,7 @@ var False = value(false)
 
 var run = require('command-promise')
 var rev = require('./rev')
+var toplevel = require('./toplevel')
 
 
 var is = module.exports = {}
@@ -33,7 +34,7 @@ is.gitdir = function ()
 
 is.rebase = function ()
 {
-	return rev('--show-toplevel')
+	return toplevel()
 	.then(function (path)
 	{
 		path = join(path, '.git/rebase-merge')
