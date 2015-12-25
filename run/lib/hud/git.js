@@ -2,7 +2,8 @@
 var clc   = require('cli-color')
 
 var bold = clc.bold
-var red  = clc.red
+var red = clc.red
+var green = clc.green
 var magenta = clc.magenta
 
 var len   = clc.getStrippedLength
@@ -47,7 +48,18 @@ function output ()
 
 		if (head)
 		{
+			if (branch)
+			{
+				line = line + green(branch)
+			}
+			else
+			{
+				line = line + magenta('⟨HEAD⟩')
+			}
 
+			line = line + hud.space + hud.bull + hud.space
+
+			line = line + red(head)
 		}
 		else
 		{
