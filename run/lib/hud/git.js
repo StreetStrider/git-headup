@@ -1,8 +1,9 @@
 
 var clc   = require('cli-color')
 
-var bold  = clc.bold
-var red   = clc.red
+var bold = clc.bold
+var red  = clc.red
+var magenta = clc.magenta
 
 var len   = clc.getStrippedLength
 var slice = clc.slice
@@ -34,14 +35,27 @@ function output ()
 	])
 	.then(function (_)
 	{
-		console.log('| head: %s, branch: %s, bare: %s, tree: %s, rebase: %s', _[0], _[1], _[2], _[3], _[4])
-	})
+		var head   = _[0]
+		var branch = _[1]
+		var isBare = _[2]
+		var isTree = _[3]
+		var isRebase = _[4]
 
-	.then(function (rev)
-	{
 		var line = bold(hud.pipe) + hud.space + bold('git')
 
-		// + hud.space + red(rev)
+		line = line + hud.space + hud.bull + hud.space
+
+		if (head)
+		{
+
+		}
+		else
+		{
+			line = line + magenta('before first commit')
+		}
+
+		//  
+		console.log('| head: %s, branch: %s, bare: %s, tree: %s, rebase: %s', _[0], _[1], _[2], _[3], _[4])
 
 		return line
 	})

@@ -5,6 +5,7 @@ hud.pipe  = '|'
 hud.space = ' '
 hud.nl    = '\n'
 hud.ell   = '…'
+hud.bull  = '•'
 
 var write = hud.write = function (string)
 {
