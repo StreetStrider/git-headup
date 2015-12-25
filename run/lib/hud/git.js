@@ -11,6 +11,9 @@ var hud = require('./hud')
 
 var git = require('../git/git')
 var is  = require('../git/is')
+var head = require('../git/rev-head')
+var branch = require('../git/branch')
+
 
 var maybe = require('../maybe')
 
@@ -23,14 +26,15 @@ module.exports = function ()
 function output ()
 {
 	return Promise.all([
-		git('rev-parse --short HEAD'),
+		head(),
+		branch(),
 		is.bare(),
 		is.tree(),
 		is.rebase()
 	])
 	.then(function (_)
 	{
-		console.log('| rev: %s, bare: %s, tree: %s, rebase: %s', _[0], _[1], _[2], _[3])
+		console.log('| head: %s, branch: %s, bare: %s, tree: %s, rebase: %s', _[0], _[1], _[2], _[3], _[4])
 	})
 
 	.then(function (rev)
@@ -42,5 +46,3 @@ function output ()
 		return line
 	})
 }
-
-// git symbolic-ref --short HEAD
