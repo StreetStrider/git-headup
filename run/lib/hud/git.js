@@ -1,6 +1,10 @@
 
-var clc = require('cli-color')
-var len = clc.getStrippedLength
+var clc   = require('cli-color')
+
+var bold  = clc.bold
+var red   = clc.red
+
+var len   = clc.getStrippedLength
 var slice = clc.slice
 
 var hud = require('./hud')
@@ -21,7 +25,7 @@ function print ()
 	return git('rev-parse --short HEAD')
 	.then(function (rev)
 	{
-		var line = clc.bold(hud.pipe) + hud.space + clc.bold('git') + hud.space + clc.red(rev)
+		var line = bold(hud.pipe) + hud.space + bold('git') + hud.space + red(rev)
 
 		return line
 	})
