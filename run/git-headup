@@ -8,6 +8,7 @@ var git = require('./lib/hud/git')
 var maybe = require('./lib/maybe')
 
 
-Promise.resolve(cwd()).then(hud.writeln)
+Promise.resolve()
+.then(cwd).then(hud.writeln)
 .then(git).then(maybe(hud.writeln))
 .catch(console.error)
