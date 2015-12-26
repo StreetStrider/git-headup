@@ -53,9 +53,7 @@ function output ()
 		var isGitdir = _[4]
 		var isRebase = _[5]
 
-		var seq = []
-
-		return Promise.resolve(seq)
+		return Promise.resolve([])
 		/* LEFT */
 		.then(function (seq)
 		{
