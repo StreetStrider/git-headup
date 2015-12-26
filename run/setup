@@ -10,3 +10,5 @@ precmd ()
 {
 	"${run}/git-headup" ${?}
 }
+
+cd - > /dev/null
