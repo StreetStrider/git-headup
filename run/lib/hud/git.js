@@ -13,6 +13,7 @@ var style__empty = clc.yellow
 
 var style__modified = clc.bgGreen.whiteBright
 var style__staged = clc.bgYellow.whiteBright
+var style__conflicted = clc.bgRed.whiteBright
 
 var style__author = clc.blue
 var style__msg = clc.italic
@@ -126,6 +127,11 @@ function output ()
 
 				console.log(hud.pipe, status)
 
+				if (status.conflicted)
+				{
+					right.unshift([ 'right', style__conflicted(hud.space + status.conflicted + hud.space) ])
+					right.unshift([ 'right', hud.space ])
+				}
 				if (status.modified)
 				{
 					right.unshift([ 'right', style__modified(hud.space + status.modified + hud.space) ])
