@@ -55,60 +55,79 @@ function output ()
 
 		var seq = []
 
-		seq.push([ null, bold(hud.pipe) + hud.space + bold('git') ])
-
-		if (isBare)
+		return Promise.resolve(seq)
+		/* LEFT */
+		.then(function (seq)
 		{
-			seq.push([ null, line + hud.space + style__bare('bare') ])
-		}
-		else if (isGitdir)
-		{
-			seq.push([ hud.space + style__gitdir('.git') ])
-		}
+			seq.push([ null, bold(hud.pipe) + hud.space + bold('git') ])
 
-		seq.push([ null, hud.space + hud.bull + hud.space ])
-
-		if (head)
-		{
-			if (isRebase)
+			if (isBare)
 			{
-				seq.push([ null, style__rebase(hud.brkt('REBASE')) ])
+				seq.push([ null, line + hud.space + style__bare('bare') ])
 			}
-			else if (branch)
+			else if (isGitdir)
 			{
-				seq.push([ null, style__branch(branch) ])
-			}
-			else
-			{
-				seq.push([ null, style__detached(hud.brkt('HEAD')) ])
+				seq.push([ hud.space + style__gitdir('.git') ])
 			}
 
 			seq.push([ null, hud.space + hud.bull + hud.space ])
 
-			seq.push([ null, style__rev(head) ])
-
-			return Promise.all([
-				loglast.author(),
-				loglast.msg()
-			])
-			.then(function (_)
+			if (head)
 			{
-				var author = _[0]
-				var msg = _[1]
+				if (isRebase)
+				{
+					seq.push([ null, style__rebase(hud.brkt('REBASE')) ])
+				}
+				else if (branch)
+				{
+					seq.push([ null, style__branch(branch) ])
+				}
+				else
+				{
+					seq.push([ null, style__detached(hud.brkt('HEAD')) ])
+				}
 
-				seq.push([ 'ext', hud.space + hud.bull + hud.space ])
+				seq.push([ null, hud.space + hud.bull + hud.space ])
 
-				seq.push([ 'ext', style__author(author) + ',' + hud.space + style__msg(msg) ])
+				seq.push([ null, style__rev(head) ])
+
+				return Promise.all([
+					loglast.author(),
+					loglast.msg()
+				])
+				.then(function (_)
+				{
+					var author = _[0]
+					var msg = _[1]
+
+					seq.push([ 'ext', hud.space + hud.bull + hud.space ])
+
+					seq.push([ 'ext', style__author(author) + ',' + hud.space + style__msg(msg) ])
+
+					return seq
+				})
+			}
+			else
+			{
+				seq.push([ null, style__empty('before first commit') ])
 
 				return seq
-			})
-		}
-		else
+			}
+		})
+		/* RIGHT */
+		.then(function (seq)
 		{
-			seq.push([ null, style__empty('before first commit') ])
+			var line = cat(seq)
+			var L = len(line)
+			var cols = process.stdout.columns
+
+			if (L < cols)
+			{
+				seq.push([ 'space', clc.bgGreen(hud.space.repeat(cols - L)) ])
+			}
 
 			return seq
-		}
+		})
 	})
 	.then(cat)
 	.then(function (line)
