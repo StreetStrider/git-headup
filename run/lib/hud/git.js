@@ -30,6 +30,7 @@ var head = require('../git/rev-head')
 var branch = require('../git/branch')
 var loglast = require('../git/log-last')
 var status = require('../git/status')
+var upstream = require('../git/upstream')
 
 
 var maybe = require('../maybe')
@@ -121,9 +122,15 @@ function output ()
 		/* RIGHT */
 		.then(function (left)
 		{
-			return status()
-			.then(function (status)
+			return Promise.all([
+				status(),
+				upstream()
+			])
+			.then(function (_)
 			{
+				var status = _[0]
+				var upstream = _[1]
+
 				var right = []
 
 				if (status.conflicted)
@@ -147,7 +154,14 @@ function output ()
 					right.unshift([ 'right', hud.space + style__untracked(status.untracked + '?') ])
 				}
 
-				return [ left, right ]
+				if (upstream)
+				{
+					return [ left, right ]
+				}
+				else
+				{
+					return [ left, right ]
+				}
 			})
 		})
 		.then(function (seq)
@@ -161,8 +175,8 @@ function output ()
 			var spaces = [ 'space', '' ]
 			if (L < cols)
 			{
-				//spaces = [ 'space', clc.green('~'.repeat(cols - L)) ]
-				spaces = [ 'space', ' '.repeat(cols - L) ]
+				spaces = [ 'space', clc.green('~'.repeat(cols - L)) ]
+				//spaces = [ 'space', ' '.repeat(cols - L) ]
 			}
 
 			return left.concat([ spaces ], right)
