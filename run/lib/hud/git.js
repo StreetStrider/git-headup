@@ -11,6 +11,9 @@ var style__detached = clc.magenta
 var style__rev = clc.red
 var style__empty = clc.yellow
 
+var style__modified = clc.bgGreen.whiteBright
+var style__staged = clc.bgYellow.whiteBright
+
 var style__author = clc.blue
 var style__msg = clc.italic
 
@@ -121,23 +124,35 @@ function output ()
 			{
 				var right = []
 
-				console.dir(status)
+				console.log(hud.pipe, status)
 
-				return left
+				if (status.modified)
+				{
+					right.unshift([ 'right', style__modified(hud.space + status.modified + hud.space) ])
+				}
+				if (status.staged)
+				{
+					right.unshift([ 'right', style__staged(hud.space + status.staged + hud.space) ])
+				}
+
+				return [ left, right ]
 			})
 		})
 		.then(function (seq)
 		{
-			var line = cat(seq)
-			var L = len(line)
+			var left  = seq[0]
+			var right = seq[1]
+
+			var L = len(cat(left)) + len(cat(right))
 			var cols = process.stdout.columns
 
+			var spaces = [ 'space', '' ]
 			if (L < cols)
 			{
-				seq.push([ 'space', clc.bgGreen(hud.space.repeat(cols - L)) ])
+				spaces = [ 'space', clc.green('~'.repeat(cols - L)) ]
 			}
 
-			return seq
+			return left.concat([ spaces ], right)
 		})
 	})
 	.then(cat)
