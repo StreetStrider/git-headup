@@ -14,6 +14,7 @@ var style__empty = clc.yellow
 var style__modified = clc.bgGreen.whiteBright
 var style__staged = clc.bgYellow.whiteBright
 var style__conflicted = clc.bgRed.whiteBright
+var style__untracked = clc.blackBright
 
 var style__author = clc.blue
 var style__msg = clc.italic
@@ -139,6 +140,13 @@ function output ()
 				if (status.staged)
 				{
 					right.unshift([ 'right', style__staged(hud.space + status.staged + hud.space) ])
+				}
+
+				right.unshift([ 'right', hud.space ])
+
+				if (status.untracked)
+				{
+					right.unshift([ 'right', hud.space + style__untracked(status.untracked + '?') ])
 				}
 
 				return [ left, right ]
