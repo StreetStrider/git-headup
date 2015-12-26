@@ -2,10 +2,12 @@
 
 > Head-up display for git in command line
 
+git aliases, git scripts, zsh prompt with git and npm HUD
+
 ```sh
 # install `git-headup` locally
 $ cd
-$ npm i StreetStrider/git-headup
+$ npm i git-headup
 ```
 
 ```ini
@@ -17,4 +19,11 @@ $ npm i StreetStrider/git-headup
 ```sh
 # add `~/node_modules/git-headup/run` to $PATH
 $ PATH=~/node_modules/git-headup/run:$PATH
+# or you can add whole npm's .bin (mind what you're doing)
+$ PATH=~/node_modules/.bin:$PATH
+```
+
+```
+# ~/.zshrc
+. ~/node_modules/git-headup/run/setup
 ```

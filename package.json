@@ -1,6 +1,10 @@
 {
 	"name":    "git-headup",
-	"version": "1.0.0-pre1",
+	"version": "1.0.0-pre2",
+
+	"author": "StreetStrider <teamfortresslife@gmail.com>",
+	"license": "MIT",
+	"repository": "StreetStrider/git-headup",
 
 	"bin":
 	{
