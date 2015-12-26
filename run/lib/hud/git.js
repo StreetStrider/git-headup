@@ -53,38 +53,39 @@ function output ()
 		var isGitdir = _[4]
 		var isRebase = _[5]
 
-		var line = bold(hud.pipe) + hud.space + bold('git')
+		var seq = []
+
+		seq.push([ null, bold(hud.pipe) + hud.space + bold('git') ])
 
 		if (isBare)
 		{
-			line = line + hud.space + style__bare('bare')
+			seq.push([ null, line + hud.space + style__bare('bare') ])
 		}
 		else if (isGitdir)
 		{
-			line = line + hud.space + style__gitdir('.git')
+			seq.push([ hud.space + style__gitdir('.git') ])
 		}
 
-
-		line = line + hud.space + hud.bull + hud.space
+		seq.push([ null, hud.space + hud.bull + hud.space ])
 
 		if (head)
 		{
 			if (isRebase)
 			{
-				line = line + style__rebase(hud.brkt('REBASE'))
+				seq.push([ null, style__rebase(hud.brkt('REBASE')) ])
 			}
 			else if (branch)
 			{
-				line = line + style__branch(branch)
+				seq.push([ null, style__branch(branch) ])
 			}
 			else
 			{
-				line = line + style__detached(hud.brkt('HEAD'))
+				seq.push([ null, style__detached(hud.brkt('HEAD')) ])
 			}
 
-			line = line + hud.space + hud.bull + hud.space
+			seq.push([ null, hud.space + hud.bull + hud.space ])
 
-			line = line + style__rev(head)
+			seq.push([ null, style__rev(head) ])
 
 			return Promise.all([
 				loglast.author(),
@@ -95,20 +96,21 @@ function output ()
 				var author = _[0]
 				var msg = _[1]
 
-				line = line + hud.space + hud.bull + hud.space
+				seq.push([ 'ext', hud.space + hud.bull + hud.space ])
 
-				line = line + style__author(author) + ',' + hud.space + style__msg(msg)
+				seq.push([ 'ext', style__author(author) + ',' + hud.space + style__msg(msg) ])
 
-				return line
+				return seq
 			})
 		}
 		else
 		{
-			line = line + style__empty('before first commit')
+			seq.push([ null, style__empty('before first commit') ])
 
-			return line
+			return seq
 		}
 	})
+	.then(cat)
 	.then(function (line)
 	{
 		var cols = process.stdout.columns
@@ -121,4 +123,12 @@ function output ()
 
 		return line
 	})
+}
+
+
+var nth = require('ramda').nth
+
+function cat (seq)
+{
+	return seq.map(nth(1)).join('')
 }
