@@ -129,7 +129,7 @@ function output ()
 			.then(function (_)
 			{
 				var status = _[0]
-				var upstream = _[1]
+				var revupstream = _[1]
 
 				var right = []
 
@@ -154,9 +154,14 @@ function output ()
 					right.unshift([ 'right', hud.space + style__untracked(status.untracked + '?') ])
 				}
 
-				if (upstream)
+				if (revupstream)
 				{
-					return [ left, right ]
+					return upstream.delta(revupstream)
+					.then(function (_)
+					{
+						console.dir(_)
+						return [ left, right ]
+					})
 				}
 				else
 				{
