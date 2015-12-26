@@ -24,6 +24,7 @@ var is  = require('../git/is')
 var head = require('../git/rev-head')
 var branch = require('../git/branch')
 var loglast = require('../git/log-last')
+var status = require('../git/status')
 
 
 var maybe = require('../maybe')
@@ -113,6 +114,18 @@ function output ()
 			}
 		})
 		/* RIGHT */
+		.then(function (left)
+		{
+			return status()
+			.then(function (status)
+			{
+				var right = []
+
+				console.dir(status)
+
+				return left
+			})
+		})
 		.then(function (seq)
 		{
 			var line = cat(seq)
