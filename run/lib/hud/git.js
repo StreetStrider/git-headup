@@ -11,13 +11,16 @@ var style__detached = clc.magenta
 var style__rev = clc.red
 var style__empty = clc.yellow
 
+var style__author = clc.blue
+var style__msg = clc.italic
+
 var style__modified = clc.bgGreen.whiteBright
 var style__staged = clc.bgYellow.whiteBright
 var style__conflicted = clc.bgRed.whiteBright
 var style__untracked = clc.blackBright
 
-var style__author = clc.blue
-var style__msg = clc.italic
+var style__ahead = clc.bgBlue.whiteBright
+var style__behind = clc.bgWhite
 
 var len   = clc.getStrippedLength
 var slice = clc.slice
@@ -147,19 +150,32 @@ function output ()
 					right.unshift([ 'right', style__staged(hud.space + status.staged + hud.space) ])
 				}
 
-				right.unshift([ 'right', hud.space ])
+				if (status.modified || status.staged)
+				{
+					right.unshift([ 'right', hud.space ])
+				}
 
 				if (status.untracked)
 				{
-					right.unshift([ 'right', hud.space + style__untracked(status.untracked + '?') ])
+					right.unshift([ 'right', style__untracked(status.untracked + '?') ])
+					right.unshift([ 'right', hud.space ])
 				}
 
 				if (revupstream)
 				{
 					return upstream.delta(revupstream)
-					.then(function (_)
+					.then(function (delta)
 					{
-						console.dir(_)
+						if (delta[0] || delta[1])
+						{
+							right.unshift([ 'right', style__ahead(
+								hud.space + delta[1] + hud.space + '→' + hud.space + hud.space
+							) ])
+							right.unshift([ 'right', style__behind(
+								hud.space + '←' + hud.space + delta[0] + hud.space + revupstream + hud.space
+							) ])
+						}
+
 						return [ left, right ]
 					})
 				}

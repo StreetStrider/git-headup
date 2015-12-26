@@ -12,11 +12,10 @@ var upstream = module.exports = function upstream ()
 
 upstream.delta = function (revupstream)
 {
-	return Promise.all([ count('HEAD', revupstream), count(revupstream, 'HEAD') ])
-	.then(function (_)
-	{
-		return _
-	})
+	return Promise.all([
+		count('HEAD', revupstream),
+		count(revupstream, 'HEAD')
+	])
 }
 
 function count (reva, revb)
