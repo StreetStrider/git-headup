@@ -126,8 +126,6 @@ function output ()
 			{
 				var right = []
 
-				console.log(hud.pipe, status)
-
 				if (status.conflicted)
 				{
 					right.unshift([ 'right', style__conflicted(hud.space + status.conflicted + hud.space) ])
@@ -163,7 +161,8 @@ function output ()
 			var spaces = [ 'space', '' ]
 			if (L < cols)
 			{
-				spaces = [ 'space', clc.green('~'.repeat(cols - L)) ]
+				//spaces = [ 'space', clc.green('~'.repeat(cols - L)) ]
+				spaces = [ 'space', ' '.repeat(cols - L) ]
 			}
 
 			return left.concat([ spaces ], right)
