@@ -4,7 +4,7 @@ var maybe = require('../maybe')
 var relative = require('path').relative
 var tildify = require('tildify')
 
-var clc   = require('cli-color')
+var clc = require('cli-color')
 
 var bold = clc.bold
 var red  = clc.red
