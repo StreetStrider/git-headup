@@ -8,7 +8,7 @@ var hud = require('./hud')
 
 module.exports = function ()
 {
-	var code = process.argv[2]
+	var code = process.argv[2] || 0
 
 	if (Number(code) !== 0)
 	{
