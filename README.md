@@ -23,7 +23,7 @@ $ PATH=~/node_modules/git-headup/run:$PATH
 $ PATH=~/node_modules/.bin:$PATH
 ```
 
-```
+```sh
 # ~/.zshrc
 . ~/node_modules/git-headup/run/setup
 ```
