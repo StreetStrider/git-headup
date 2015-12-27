@@ -85,17 +85,21 @@ function output ()
 				if (isRebase)
 				{
 					left.push([ null, style__rebase(hud.brkt('REBASE')) ])
+					left.push([ null, hud.space + hud.bull + hud.space ])
 				}
 				else if (branch)
 				{
-					left.push([ null, style__branch(branch) ])
+					if (branch !== 'master')
+					{
+						left.push([ null, style__branch(branch) ])
+						left.push([ null, hud.space + hud.bull + hud.space ])
+					}
 				}
 				else
 				{
 					left.push([ null, style__detached(hud.brkt('HEAD')) ])
+					left.push([ null, hud.space + hud.bull + hud.space ])
 				}
-
-				left.push([ null, hud.space + hud.bull + hud.space ])
 
 				left.push([ null, style__rev(head) ])
 
