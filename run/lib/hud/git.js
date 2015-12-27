@@ -18,6 +18,7 @@ var style__modified = clc.bgGreen.whiteBright
 var style__staged = clc.bgYellow.whiteBright
 var style__conflicted = clc.bgRed.whiteBright
 var style__untracked = clc.blackBright
+var style__shash = clc.blackBright
 
 var style__ahead = clc.bgBlue.whiteBright
 var style__behind = clc.bgWhite
@@ -33,6 +34,7 @@ var head = require('../git/rev-head')
 var branch = require('../git/branch')
 var loglast = require('../git/log-last')
 var status = require('../git/status')
+var stashes = require('../git/stashes')
 var upstream = require('../git/upstream')
 
 
@@ -131,12 +133,14 @@ function output ()
 		{
 			return Promise.all([
 				status(),
+				stashes(),
 				upstream()
 			])
 			.then(function (_)
 			{
 				var status = _[0]
-				var revupstream = _[1]
+				var stashes = _[1]
+				var revupstream = _[2]
 
 				var right = []
 
@@ -162,6 +166,12 @@ function output ()
 				if (status.untracked)
 				{
 					right.unshift([ 'right', style__untracked(status.untracked + '?') ])
+					right.unshift([ 'right', hud.space ])
+				}
+
+				if (stashes)
+				{
+					right.unshift([ 'right', style__shash(hud.brkt(stashes)) ])
 					right.unshift([ 'right', hud.space ])
 				}
 
