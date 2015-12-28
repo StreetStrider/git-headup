@@ -115,7 +115,6 @@ function output ()
 					var msg = _[1]
 
 					left.push([ 'ext', hud.space + hud.bull + hud.space ])
-
 					left.push([ 'ext', style__author(author) + ',' + hud.space + style__msg(msg) ])
 
 					return left
@@ -204,38 +203,62 @@ function output ()
 			var left  = seq[0]
 			var right = seq[1]
 
-			var L = len(cat(left)) + len(cat(right))
+			var L__left  = len(cat(left))
+			var L__right = len(cat(right))
+			var L = L__left + L__right
+
 			var cols = process.stdout.columns
 
-			var spaces = [ 'space', '' ]
-			if (L < cols)
+			if (L <= cols)
 			{
-				spaces = [ 'space', clc.green('~'.repeat(cols - L)) ]
-				//spaces = [ 'space', ' '.repeat(cols - L) ]
-			}
+				var spaces = [ 'space', clc.green('~'.repeat(cols - L)) ]
+				//var spaces = [ 'space', ' '.repeat(cols - L) ]
 
-			return left.concat([ spaces ], right)
+				return left.concat([ spaces ], right)
+			}
+			else
+			{
+				var leftmost = left.filter(byHeadNot('ext'))
+				var leftext  = left.filter(byHead('ext'))
+
+				var delta = cols - (len(cat(leftmost)) + L__right)
+
+				if (delta >= 3)
+				{
+					leftext = cat(leftext)
+					leftext = clc.bgGreen(leftext)
+					leftext = hud.ellipsed(delta, leftext)
+					leftext = [ 'ext', leftext ]
+
+					return leftmost.concat([ leftext ], right)
+				}
+				else
+				{
+					return leftmost.concat(right) // gap
+				}
+			}
 		})
 	})
 	.then(cat)
-	.then(function (line)
-	{
-		var cols = process.stdout.columns
-
-		if (len(line) > cols)
-		{
-			line = slice(line, 0, cols - 3)
-			line = line + hud.ell + hud.space
-		}
-
-		return line
-	})
+	.then(hud.ellipsed(process.stdout.columns))
 }
 
 
-var nth = require('ramda').nth
+var R = require('ramda')
+
+var nth = R.nth
 
 function cat (seq)
 {
 	return seq.map(nth(1)).join('')
+}
+
+function byHead (head)
+{
+	return R.pipe(nth(0), R.equals(head))
+}
+
+function byHeadNot (head)
+{
+	return R.pipe(byHead(head), R.not)
 }
