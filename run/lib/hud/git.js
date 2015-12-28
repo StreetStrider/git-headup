@@ -187,6 +187,7 @@ function output ()
 							right.unshift([ 'right', style__behind(
 								hud.space + '←' + hud.space + delta[0] + hud.space + revupstream + hud.space
 							) ])
+							right.unshift([ 'right', hud.space ])
 						}
 
 						return [ left, right ]
@@ -211,10 +212,7 @@ function output ()
 
 			if (L <= cols)
 			{
-				var spaces = [ 'space', clc.green('~'.repeat(cols - L)) ]
-				//var spaces = [ 'space', ' '.repeat(cols - L) ]
-
-				return left.concat([ spaces ], right)
+				return gap(left, right, cols)
 			}
 			else
 			{
@@ -234,7 +232,7 @@ function output ()
 				}
 				else
 				{
-					return leftmost.concat(right) // gap
+					return gap(leftmost, right, cols)
 				}
 			}
 		})
@@ -252,6 +250,22 @@ function cat (seq)
 {
 	return seq.map(nth(1)).join('')
 }
+
+function gap (left, right, width)
+{
+	var what = '~'
+
+	var delta = width - (len(cat(left)) + len(cat(right)))
+
+	if (delta > 0)
+	{
+		var spaces = [ 'space', what.repeat(delta) ]
+		return left.concat([ spaces ], right)
+	}
+
+	return left.concat(right)
+}
+
 
 function byHead (head)
 {
