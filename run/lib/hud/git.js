@@ -224,7 +224,6 @@ function output ()
 				if (delta >= 3)
 				{
 					leftext = cat(leftext)
-					leftext = clc.bgGreen(leftext)
 					leftext = hud.ellipsed(delta, leftext)
 					leftext = [ 'ext', leftext ]
 
@@ -253,7 +252,7 @@ function cat (seq)
 
 function gap (left, right, width)
 {
-	var what = '~'
+	var what = ' '
 
 	var delta = width - (len(cat(left)) + len(cat(right)))
 
