@@ -35,5 +35,7 @@ function output (path)
 
 	line = line + style__name(manifest.name) + hud.space + hud.brkt(style__version(manifest.version))
 
+	line = hud.ellipsed(process.stdout.columns, line)
+
 	return line
 }
