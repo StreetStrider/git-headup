@@ -259,7 +259,7 @@ function cat (seq)
 
 function gap (left, right, width)
 {
-	var what = ' '
+	var what = hud.space
 
 	var delta = width - (len(cat(left)) + len(cat(right)))
 
