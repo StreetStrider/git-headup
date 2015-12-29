@@ -2,7 +2,7 @@
 
 > Head-up display for git in command line
 
-git aliases, git scripts, zsh prompt with git and npm HUD
+git aliases, git scripts, zsh prompt with git and npm HUD.
 
 ```sh
 # install `git-headup` locally
@@ -11,7 +11,7 @@ $ npm i git-headup
 ```
 
 ```ini
-# .gitconfig
+# include aliases in your .gitconfig
 [include]
   path = ~/node_modules/git-headup/gitconfig
 ```
@@ -24,6 +24,9 @@ $ PATH=~/node_modules/.bin:$PATH
 ```
 
 ```sh
-# ~/.zshrc
+# setup prompt and precmd in your ~/.zshrc
 . ~/node_modules/git-headup/run/setup
 ```
+
+# license
+MIT, Copyright © 2015 StreetStrider.
