@@ -32,6 +32,7 @@ var git = require('../git/git')
 var is  = require('../git/is')
 var head = require('../git/rev-head')
 var branch = require('../git/branch')
+var username = require('../git/username')
 var loglast = require('../git/log-last')
 var status = require('../git/status')
 var stashes = require('../git/stashes')
@@ -106,16 +107,22 @@ function output ()
 				left.push([ null, style__rev(head) ])
 
 				return Promise.all([
+					username(),
 					loglast.author(),
 					loglast.msg()
 				])
 				.then(function (_)
 				{
-					var author = _[0]
-					var msg = _[1]
+					var me = _[0]
+					var author = _[1]
+					var msg = _[2]
 
 					left.push([ 'ext', hud.space + hud.bull + hud.space ])
-					left.push([ 'ext', style__author(author) + ',' + hud.space + style__msg(msg) ])
+					if (author !== me)
+					{
+						left.push([ 'ext', style__author(author) + ',' + hud.space ])
+					}
+					left.push([ 'ext', style__msg(msg) ])
 
 					return left
 				})
