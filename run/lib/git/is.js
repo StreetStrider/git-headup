@@ -5,9 +5,9 @@ var value = require('ramda').always
 var True  = value(true)
 var False = value(false)
 
-var run = require('command-promise')
 var rev = require('./rev')
 var toplevel = require('./toplevel')
+var exists = require('fs-sync').exists
 
 
 var is = module.exports = {}
@@ -39,7 +39,7 @@ is.rebase = function ()
 	{
 		path = join(path, '.git/rebase-merge')
 
-		return run('file', path).then(True, False)
+		return exists(path)
 	})
 }
 
