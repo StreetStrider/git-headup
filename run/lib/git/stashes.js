@@ -1,5 +1,6 @@
 
 var git = require('./git')
+var Null  = require('ramda').always(null)
 
 module.exports = function ()
 {
@@ -14,5 +15,6 @@ module.exports = function ()
 		{
 			return stashes.split('\n').length
 		}
-	})
+	}
+	, Null)
 }

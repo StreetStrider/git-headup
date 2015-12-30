@@ -150,29 +150,32 @@ function output ()
 
 				var right = []
 
-				if (status.conflicted)
+				if (status)
 				{
-					right.unshift([ 'right', style__conflicted(hud.space + status.conflicted + hud.space) ])
-					right.unshift([ 'right', hud.space ])
-				}
-				if (status.modified)
-				{
-					right.unshift([ 'right', style__modified(hud.space + status.modified + hud.space) ])
-				}
-				if (status.staged)
-				{
-					right.unshift([ 'right', style__staged(hud.space + status.staged + hud.space) ])
-				}
+					if (status.conflicted)
+					{
+						right.unshift([ 'right', style__conflicted(hud.space + status.conflicted + hud.space) ])
+						right.unshift([ 'right', hud.space ])
+					}
+					if (status.modified)
+					{
+						right.unshift([ 'right', style__modified(hud.space + status.modified + hud.space) ])
+					}
+					if (status.staged)
+					{
+						right.unshift([ 'right', style__staged(hud.space + status.staged + hud.space) ])
+					}
 
-				if (status.modified || status.staged)
-				{
-					right.unshift([ 'right', hud.space ])
-				}
+					if (status.modified || status.staged)
+					{
+						right.unshift([ 'right', hud.space ])
+					}
 
-				if (status.untracked)
-				{
-					right.unshift([ 'right', style__untracked(status.untracked + '?') ])
-					right.unshift([ 'right', hud.space ])
+					if (status.untracked)
+					{
+						right.unshift([ 'right', style__untracked(status.untracked + '?') ])
+						right.unshift([ 'right', hud.space ])
+					}
 				}
 
 				if (stashes)

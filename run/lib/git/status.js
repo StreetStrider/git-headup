@@ -1,5 +1,6 @@
 
 var R = require('ramda')
+var Null  = R.always(null)
 
 var git = require('./git')
 
@@ -24,7 +25,8 @@ module.exports = function status ()
 		}
 
 		return { modified, staged, untracked, conflicted }
-	})
+	}
+	, Null)
 }
 
 var normals = 'MADRC'.split('')
