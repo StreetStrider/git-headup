@@ -19,7 +19,6 @@
 		"command-promise": "^2",
 		"ramda": "^0.19",
 		"tildify": "^1.1.2",
-
 		"find-root": "^0.1.1",
 		"fs-sync": "^1.0.1"
 	}
