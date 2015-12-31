@@ -74,7 +74,7 @@ function output ()
 
 			if (isBare)
 			{
-				left.push([ null, line + hud.space + style__bare('bare') ])
+				left.push([ null, hud.space + style__bare('bare') ])
 			}
 			else if (isGitdir)
 			{
