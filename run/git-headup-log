@@ -16,18 +16,18 @@ format__msg="${style__auto}%s${style__reset}"
 
 pretty__coop="${format__hash}${format__decorate} ${format__author} ${format__reldate} ${format__msg}"
 
-logDepth=$(git config --get --int git-headup.log-depth)
+log_depth=$(git config --get --int git-headup.log-depth)
 
 mode=${1}
 shift
 
 case "${mode}" in
 	"l")
-	git log -${logDepth} --pretty="${format__hash}${format__decorate} ${format__reldate} ${format__msg}" ${@}
+	git log -${log_depth} --pretty="${format__hash}${format__decorate} ${format__reldate} ${format__msg}" ${@}
 	;;
 
 	"ll")
-	git log -${logDepth} --pretty="${pretty__coop}" ${@}
+	git log -${log_depth} --pretty="${pretty__coop}" ${@}
 	;;
 
 	"g")
