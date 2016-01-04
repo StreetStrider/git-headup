@@ -7,7 +7,9 @@ var fs = require('fs-sync')
 var hud = require('./hud')
 var clc = require('cli-color')
 var bold = clc.bold
+
 var style__name = clc.red
+var style__private = clc.underline
 var style__version = bold
 
 
@@ -34,6 +36,11 @@ function output (path)
 	var manifest = fs.readJSON(path)
 
 	line = line + style__name(manifest.name)
+
+	if (manifest.private)
+	{
+		line = line + hud.space + style__private('private')
+	}
 
 	if (manifest.version)
 	{
