@@ -12,7 +12,7 @@ var red  = clc.red
 var len   = clc.getStrippedLength
 var slice = clc.slice
 
-var hud = require('./hud')
+var hud = require('./hud-util')
 
 module.exports = function ()
 {

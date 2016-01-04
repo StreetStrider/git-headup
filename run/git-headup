@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-var hud = require('./lib/hud/hud')
+var hud = require('./lib/hud/hud-util')
 
 var cwd = require('./lib/hud/cwd')
 var git = require('./lib/hud/git')

@@ -26,7 +26,7 @@ var style__behind = clc.bgWhite
 var len   = clc.getStrippedLength
 var slice = clc.slice
 
-var hud = require('./hud')
+var hud = require('./hud-util')
 
 var git = require('../git/git')
 var is  = require('../git/is')

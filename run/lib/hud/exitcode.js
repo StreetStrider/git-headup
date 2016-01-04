@@ -4,7 +4,7 @@ var bold = clc.bold
 
 var style = clc.bgRed.whiteBright
 
-var hud = require('./hud')
+var hud = require('./hud-util')
 
 module.exports = function ()
 {

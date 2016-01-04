@@ -4,7 +4,7 @@ var npmroot = require('find-root')
 var join = require('path').join
 var fs = require('fs-sync')
 
-var hud = require('./hud')
+var hud = require('./hud-util')
 var clc = require('cli-color')
 var bold = clc.bold
 
