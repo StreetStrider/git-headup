@@ -33,7 +33,12 @@ function output (path)
 	path = join(path, 'package.json')
 	var manifest = fs.readJSON(path)
 
-	line = line + style__name(manifest.name) + hud.space + hud.brkt(style__version(manifest.version))
+	line = line + style__name(manifest.name)
+
+	if (manifest.version)
+	{
+		line = line + hud.space + hud.brkt(style__version(manifest.version))
+	}
 
 	line = hud.ellipsed(process.stdout.columns, line)
 
