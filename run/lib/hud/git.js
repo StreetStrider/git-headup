@@ -53,18 +53,16 @@ function output ()
 		head(),
 		branch(),
 		is.bare(),
-		is.tree(),
 		is.gitdir(),
 		is.rebase()
 	])
 	.then(function (_)
 	{
-		var head   = _[0]
-		var branch = _[1]
-		var isBare = _[2]
-		var isTree = _[3]
-		var isGitdir = _[4]
-		var isRebase = _[5]
+		var head     = _[0]
+		var branch   = _[1]
+		var isBare   = _[2]
+		var isGitdir = _[3]
+		var isRebase = _[4]
 
 		return Promise.resolve([])
 		/* LEFT */

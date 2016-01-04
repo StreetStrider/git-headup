@@ -22,11 +22,6 @@ is.bare = function ()
 	return rev('--is-bare-repository').then(troo)
 }
 
-is.tree = function ()
-{
-	return rev('--is-inside-work-tree').then(troo)
-}
-
 is.gitdir = function ()
 {
 	return rev('--is-inside-git-dir').then(troo)
