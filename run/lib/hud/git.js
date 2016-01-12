@@ -148,6 +148,11 @@ function output ()
 
 				var right = []
 
+				if (status || stashes || revupstream)
+				{
+					right.unshift([ 'right', hud.space ])
+				}
+
 				if (status)
 				{
 					if (status.conflicted)
