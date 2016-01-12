@@ -4,6 +4,8 @@
 
 git aliases, git scripts, zsh prompt with git and npm HUD.
 
+git-headup is for my own use in first place.
+
 ```sh
 # install `git-headup` locally
 $ cd
@@ -29,4 +31,4 @@ $ PATH=~/node_modules/.bin:$PATH
 ```
 
 # license
-MIT, Copyright © 2015 StreetStrider.
+MIT, Copyright © 2015 — 2016 StreetStrider.
