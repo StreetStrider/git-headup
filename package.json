@@ -1,6 +1,6 @@
 {
 	"name":    "git-headup",
-	"version": "1.0.0",
+	"version": "1.1.0-pre",
 
 	"author": "StreetStrider <teamfortresslife@gmail.com>",
 	"license": "MIT",
@@ -18,7 +18,8 @@
 	{
 		"git-headup":     "run/git-headup",
 		"git-headup-log": "run/git-headup-log",
-		"git-headup-tag": "run/git-headup-tag"
+		"git-headup-tag": "run/git-headup-tag",
+		"git-headup-add": "run/git-headup-add"
 	},
 
 	"dependencies":

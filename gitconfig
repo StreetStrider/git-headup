@@ -10,7 +10,7 @@
 	ds = ! git d --staged
 
 	# Commit:
-	a = add .
+	a = ! git-headup-add
 	u = add -u
 
 	amend = commit --amend
