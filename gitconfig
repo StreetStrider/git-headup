@@ -12,6 +12,7 @@
 	# Commit:
 	a = ! git-headup-add
 	u = add -u
+	p = add -p
 
 	amend = commit --amend
 	amc   = commit --amend -C HEAD
