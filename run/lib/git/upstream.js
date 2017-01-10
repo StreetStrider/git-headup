@@ -20,7 +20,8 @@ upstream.delta = function (revupstream)
 
 function count (reva, revb)
 {
-	var revdelta = reva + '..' + revb
+	var revdelta = q(reva) + '..' + q(revb)
+
 	return git('log --format=%h', revdelta)
 	.then(function (log)
 	{
@@ -35,4 +36,11 @@ function count (reva, revb)
 			return log
 		}
 	})
+}
+
+function q (str)
+{
+	str = str.replace(/'/g, "\\'")
+	str = "'" + str + "'"
+	return str
 }
