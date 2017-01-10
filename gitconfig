@@ -41,3 +41,5 @@
 	c- = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
 
 	f = diff --name-status
+
+	pop = stash pop
