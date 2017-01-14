@@ -1,0 +1,16 @@
+#! /bin/sh
+
+topic="${2:-HEAD}"
+base="${1:-master}"
+
+fork=$(git rev-list --first-parent "^${topic}" "${base}" |\
+tail -1)
+
+echo "${fork}^".."${topic}"
+
+# fork=$(git rev-list --boundary ${topic}...${base} |\
+# grep '^-' |\
+# cut -c2-  |\
+# head -1)
+
+# git-headup-log g "${fork}".."${topic}"

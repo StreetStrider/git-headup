@@ -34,6 +34,13 @@
 	g  = ! git-headup-log g  # advanced long graphic log
 	gr = log --graph --decorate --relative-date --name-status # advanced log, maximum info
 
+	pl = ! sh -c 'git-headup-log g $(git-headup-pl "${@}")' --
+	pf = ! sh -c 'git f $(git-headup-pl "${@}")' --
+	pd = ! sh -c 'git d $(git-headup-pl "${@}")' --
+	# pl = ! git-headup-log g "^${1:-master}"..${2:-HEAD}
+	# pf = ! git f $(git-headup-pl ${@})
+	# pd = ! git d $(git-headup-pl ${@})
+
 	lgrep = ! sh -c 'git ll --grep="${1}" -i | grep -i --color "${1}"' --
 
 	# Info

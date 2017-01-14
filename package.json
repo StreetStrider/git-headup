@@ -19,7 +19,8 @@
 		"git-headup":     "run/git-headup",
 		"git-headup-log": "run/git-headup-log",
 		"git-headup-tag": "run/git-headup-tag",
-		"git-headup-add": "run/git-headup-add"
+		"git-headup-add": "run/git-headup-add",
+		"git-headup-pl":  "run/git-headup-pl"
 	},
 
 	"dependencies":
