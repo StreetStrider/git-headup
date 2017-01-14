@@ -6,7 +6,13 @@ base="${1:-master}"
 fork=$(git rev-list --first-parent "^${topic}" "${base}" |\
 tail -1)
 
-echo "${fork}^".."${topic}"
+if [ -n "${fork}" ]; then
+	fork="${fork}^"
+else
+	fork="HEAD"
+fi
+
+echo "${fork}".."${topic}"
 
 # fork=$(git rev-list --boundary ${topic}...${base} |\
 # grep '^-' |\
