@@ -3,20 +3,26 @@
 topic="${2:-HEAD}"
 base="${1:-master}"
 
-fork=$(git rev-list --first-parent "^${topic}" "${base}" |\
-tail -1)
+fork_rev ()
+{
+	git rev-list    \
+		--date-order \
+		--reverse    \
+		--boundary   \
+	${topic}...${base} |\
+	\
+	grep '^-' |\
+	cut -c2-  |\
+	head -1
+}
 
-if [ -n "${fork}" ]; then
-	fork="${fork}^"
-else
-	fork="HEAD"
+fork=$(fork_rev)
+
+if [ -z "${fork}" ]; then
+	fork="${base}"
 fi
 
 echo "${fork}".."${topic}"
 
-# fork=$(git rev-list --boundary ${topic}...${base} |\
-# grep '^-' |\
-# cut -c2-  |\
-# head -1)
-
-# git-headup-log g "${fork}".."${topic}"
+# fork=$(git rev-list --first-parent "^${topic}" "${base}" |\
+# tail -1)
