@@ -31,4 +31,4 @@ $ PATH=~/node_modules/.bin:$PATH
 ```
 
 # license
-MIT, Copyright © 2015 — 2016 StreetStrider.
+MIT, Copyright © 2015 — 2017 Strider.
