@@ -24,8 +24,8 @@
 	r  = remote -v
 
 	# Sync:
-	purr = pull --rebase
-	puff = push --force
+	purr = pull  --rebase
+	puff = push  --force
 	fett = fetch --prune
 
 	# History:
