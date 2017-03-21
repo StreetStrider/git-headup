@@ -45,7 +45,6 @@
 
 	# Info
 	c  = ! git gr -1
-	c- = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
 	cc = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
 
 	f = diff --name-status
