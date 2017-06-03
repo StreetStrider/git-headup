@@ -1,6 +1,13 @@
 #! /usr/bin/env node
 
-var hud = require('./lib/hud')
-var writeseq = require('./lib/hud/hud-util').writeseq
+try
+{
+	var hud = require('./lib/hud')
+	var writeseq = require('./lib/hud/hud-util').writeseq
 
-writeseq([ hud.cwd, hud.git, hud.npm, hud.exitcode ])
+	writeseq([ hud.cwd, hud.git, hud.npm, hud.exitcode ])
+}
+catch (e)
+{
+	console.log('|', process.cwd())
+}
