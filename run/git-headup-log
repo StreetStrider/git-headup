@@ -14,6 +14,7 @@ format__reldate="${style__green}[%ar]${style__reset}"
 format__author="${style__blue}%an${style__reset}"
 format__msg="${style__auto}%s${style__reset}"
 
+pretty__solo="${format__hash}${format__decorate} ${format__reldate} ${format__msg}"
 pretty__coop="${format__hash}${format__decorate} ${format__author} ${format__reldate} ${format__msg}"
 
 log_depth=$(git config --get --int git-headup.log-depth)
@@ -23,7 +24,7 @@ shift
 
 case "${mode}" in
 	"l")
-	git log -${log_depth} --pretty="${format__hash}${format__decorate} ${format__reldate} ${format__msg}" ${@}
+	git log -${log_depth} --pretty="${pretty__solo}" ${@}
 	;;
 
 	"ll")
