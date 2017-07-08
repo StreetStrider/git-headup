@@ -31,6 +31,10 @@ case "${mode}" in
 	git log -${log_depth} --pretty="${pretty__coop}" ${@}
 	;;
 
+	"lg")
+	git log --pretty="${pretty__coop}" ${@}
+	;;
+
 	"g")
 	git log --graph --pretty="${pretty__coop}" ${@}
 	;;
