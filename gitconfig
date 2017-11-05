@@ -26,7 +26,7 @@
 	# Sync:
 	purr = pull  --rebase
 	puff = push  --force
-	fett = fetch --prune
+	fett = fetch --prune --all
 
 	# History:
 	l  = ! git-headup-log l  # for solo work
