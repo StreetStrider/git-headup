@@ -53,5 +53,6 @@
 
 	f = diff --name-status
 
+	# Stash
 	pop  = stash pop
 	drop = stash drop
