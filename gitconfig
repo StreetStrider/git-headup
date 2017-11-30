@@ -8,6 +8,8 @@
 	# Working copy:
 	d  = ! git difftool --no-prompt 2> /dev/null
 	ds = ! git d --staged
+	cw = checkout -- .
+	cl = clean -fd
 
 	# Commit:
 	a = ! git-headup-add
