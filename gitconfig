@@ -40,9 +40,6 @@
 	pl = ! sh -c 'git-headup-log g $(git-headup-pl "${@}")' --
 	pf = ! sh -c 'git f $(git-headup-pl "${@}")' --
 	pd = ! sh -c 'git d $(git-headup-pl "${@}")' --
-	# pl = ! git-headup-log g "^${1:-master}"..${2:-HEAD}
-	# pf = ! git f $(git-headup-pl ${@})
-	# pd = ! git d $(git-headup-pl ${@})
 
 	today = ! git-headup-log lg --since=midnight
 	yesterday = ! git-headup-log lg --since=yesterday --before=midnight
