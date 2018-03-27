@@ -10,6 +10,7 @@
 	ds = ! git d --staged
 	cw = checkout -- .
 	cl = clean -fd
+	mr = mergetool
 
 	# Commit:
 	a = ! git-headup-add
