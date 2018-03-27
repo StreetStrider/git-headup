@@ -44,7 +44,7 @@
 	today = ! git-headup-log lg --since=midnight
 	yesterday = ! git-headup-log lg --since=yesterday --before=midnight
 
-	lgrep = ! sh -c 'git ll --grep="${1}" -i | grep -i --color "${1}"' --
+	lgrep = ! sh -c 'git lg --grep="${1}" -i | grep -i --color "${1}"' --
 
 	# Info
 	c  = ! git gr -1
