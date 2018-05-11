@@ -42,7 +42,8 @@
 	pf = ! sh -c 'git f $(git-headup-pl "${@}")' --
 	pd = ! sh -c 'git d $(git-headup-pl "${@}")' --
 
-	recent = ! git-headup-log lg --since=yesterday --author=$(git config user.name)
+	mine   = ! git-headup-log  g --author=$(git config user.name)
+	recent = ! git-headup-log lg --author=$(git config user.name) --since=yesterday
 
 	lgrep = ! sh -c 'git lg --grep="${1}" -i | grep -i --color "${1}"' --
 
