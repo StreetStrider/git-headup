@@ -55,5 +55,7 @@
 
 	# Stash
 	s    = stash -u
+	sp   = stash -p
 	pop  = stash pop
 	drop = stash drop
+	ap   = stash apply
