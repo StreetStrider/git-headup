@@ -8,7 +8,7 @@
 	# Working copy:
 	d  = ! git difftool --no-prompt 2> /dev/null
 	ds = ! git d --staged
-	cw = checkout -- .
+	cw = ! git-headup-cw
 	cl = clean -fd
 	mr = mergetool
 
