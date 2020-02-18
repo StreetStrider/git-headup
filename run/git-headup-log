@@ -25,19 +25,19 @@ shift
 
 case "${mode}" in
 	"l")
-	git log -${log_depth} --pretty="${pretty__solo}" ${@}
+	git log -${log_depth} --pretty="${pretty__solo}" "${@}"
 	;;
 
 	"ll")
-	git log -${log_depth} --pretty="${pretty__coop}" ${@}
+	git log -${log_depth} --pretty="${pretty__coop}" "${@}"
 	;;
 
 	"lg")
-	git log --pretty="${pretty__coop}" ${@}
+	git log --pretty="${pretty__coop}" "${@}"
 	;;
 
 	"g")
-	git log --graph --pretty="${pretty__coop}" ${@}
+	git log --graph --pretty="${pretty__coop}" "${@}"
 	;;
 
 esac

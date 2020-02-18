@@ -1,0 +1,5 @@
+#! /bin/sh
+
+username=$(git config user.name)
+
+git-headup-log lg --author="$username" "${@}"
