@@ -8,14 +8,15 @@
 	# Working copy:
 	d  = ! cd -- "${GIT_PREFIX:-.}" && git difftool --no-prompt 2> /dev/null
 	ds = ! cd -- "${GIT_PREFIX:-.}" && git d --staged
-	cw = ! cd -- "${GIT_PREFIX:-.}" && git-headup-cw
+	cw = ! cd -- "${GIT_PREFIX:-.}" && git checkout -- "${@:-.}"
 	cl = clean -fd
 	mr = mergetool
 
 	# Commit:
-	a = ! cd -- "${GIT_PREFIX:-.}" && git add "${@:-.}"
-	u = ! cd -- "${GIT_PREFIX:-.}" && git add -u "${@:-.}"
-	p = ! cd -- "${GIT_PREFIX:-.}" && git add -p "${@:-.}"
+	a =  ! cd -- "${GIT_PREFIX:-.}" && git add "${@:-.}"
+	u =  ! cd -- "${GIT_PREFIX:-.}" && git add -u "${@:-.}"
+	p =  ! cd -- "${GIT_PREFIX:-.}" && git add -p "${@:-.}"
+	rs = ! cd -- "${GIT_PREFIX:-.}" && git reset "${@:-.}"
 
 	amend = commit --amend
 	amc   = commit --amend -C HEAD
