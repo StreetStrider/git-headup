@@ -6,16 +6,16 @@
 	st = status -s
 
 	# Working copy:
-	d  = ! git difftool --no-prompt 2> /dev/null
-	ds = ! git d --staged
-	cw = ! git-headup-cw
+	d  = ! cd -- "${GIT_PREFIX:-.}" && git difftool --no-prompt 2> /dev/null
+	ds = ! cd -- "${GIT_PREFIX:-.}" && git d --staged
+	cw = ! cd -- "${GIT_PREFIX:-.}" && git-headup-cw
 	cl = clean -fd
 	mr = mergetool
 
 	# Commit:
-	a = ! git-headup-add
-	u = add -u
-	p = add -p
+	a = ! cd -- "${GIT_PREFIX:-.}" && git add "${@:-.}"
+	u = ! cd -- "${GIT_PREFIX:-.}" && git add -u "${@:-.}"
+	p = ! cd -- "${GIT_PREFIX:-.}" && git add -p "${@:-.}"
 
 	amend = commit --amend
 	amc   = commit --amend -C HEAD
@@ -32,10 +32,10 @@
 	fett = fetch --prune --all
 
 	# History:
-	l  = ! git-headup-log l  # for solo work
-	ll = ! git-headup-log ll # for coop work
-	lg = ! git-headup-log lg # unlimited coop
-	g  = ! git-headup-log g  # advanced long graphic log
+	l  = ! cd -- "${GIT_PREFIX:-.}" && git-headup-log l  # for solo work
+	ll = ! cd -- "${GIT_PREFIX:-.}" && git-headup-log ll # for coop work
+	lg = ! cd -- "${GIT_PREFIX:-.}" && git-headup-log lg # unlimited coop
+	g  = ! cd -- "${GIT_PREFIX:-.}" && git-headup-log g  # advanced long graphic log
 	gr = log --graph --decorate --date=local --name-status # advanced log, maximum info
 
 	pl = ! sh -c 'git-headup-log g $(git-headup-pl "${@}")' --
