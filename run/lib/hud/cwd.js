@@ -27,7 +27,6 @@ module.exports = function ()
 		{
 			cwd = cwd.slice(0, - rel.length) + red(cwd.slice(- rel.length))
 		}
-
 	}))
 	.then(function ()
 	{

@@ -44,7 +44,9 @@ var maybe = require('../maybe')
 
 module.exports = function ()
 {
-	return is.git().then(maybe(output))
+	return is.git()
+	//.then(maybe(is.worktree))
+	.then(maybe(output))
 }
 
 function output ()
@@ -54,7 +56,7 @@ function output ()
 		branch(),
 		is.bare(),
 		is.gitdir(),
-		is.rebase()
+		is.rebase(),
 	])
 	.then(function (_)
 	{
