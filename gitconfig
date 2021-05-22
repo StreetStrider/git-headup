@@ -6,8 +6,8 @@
 	st = status -s
 
 	# Working copy:
-	d  = ! cd -- "${GIT_PREFIX:-.}" && git difftool          --no-prompt 2> /dev/null "${@:-.}"
-	ds = ! cd -- "${GIT_PREFIX:-.}" && git difftool --staged --no-prompt 2> /dev/null "${@:-.}"
+	d  = ! git difftool --no-prompt 2> /dev/null
+	ds = ! git d --staged
 	cw = ! cd -- "${GIT_PREFIX:-.}" && git checkout -- "${@:-.}"
 	cl = clean -fd
 	mr = mergetool
@@ -50,8 +50,7 @@
 
 	# Info
 	c  = ! git gr -1
-	# cc = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
-	cc = ! git difftool --no-prompt 2> /dev/null ${1:-HEAD}~ ${1:-HEAD} -- ${2}
+	cc = ! sh -c 'git d ${1:-HEAD}~ ${1:-HEAD} -- ${2}' --
 
 	f = diff --name-status
 
