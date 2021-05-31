@@ -6,10 +6,10 @@
 	st = status -s
 
 	# Working copy:
-	d  = ! git difftool --no-prompt 2> /dev/null
-	ds = ! git d --staged
-	cw = ! cd -- "${GIT_PREFIX:-.}" && git checkout -- "${@:-.}"
-	cl = clean -fd
+	d  = ! cd -- "${GIT_PREFIX:-.}" && git difftool --no-prompt 2> /dev/null
+	ds = d --staged
+	cw = ! cd -- "${GIT_PREFIX:-.}" && git checkout  -- "${@:-.}"
+	cl = ! cd -- "${GIT_PREFIX:-.}" && git clean -fd -- "${@:-.}"
 	mr = mergetool
 
 	# Commit:
